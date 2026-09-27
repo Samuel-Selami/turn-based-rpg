@@ -371,6 +371,7 @@ GameObject:
   - component: {fileID: 718031867}
   - component: {fileID: 718031866}
   - component: {fileID: 718031865}
+  - component: {fileID: 718031869}
   m_Layer: 0
   m_Name: Enemy_3
   m_TagString: Untagged
@@ -473,6 +474,27 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &718031869
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 718031864}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9be83a017e8bb540b18812812118480, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Monster
+  target: {fileID: 1902648433}
+  monsterName: Tortue de jade
+  maxHp: 18
+  attack: 8
+  defense: 14
+  qi: 6
+  prepareTime: 0.35
+  impactTime: 0.15
+  returnTime: 0.12
 --- !u!1 &871655783
 GameObject:
   m_ObjectHideFlags: 0
@@ -485,6 +507,7 @@ GameObject:
   - component: {fileID: 871655786}
   - component: {fileID: 871655785}
   - component: {fileID: 871655784}
+  - component: {fileID: 871655788}
   m_Layer: 0
   m_Name: Enemy_2
   m_TagString: Untagged
@@ -587,6 +610,27 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &871655788
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 871655783}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9be83a017e8bb540b18812812118480, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Monster
+  target: {fileID: 2035025494}
+  monsterName: Sanglier de braise
+  maxHp: 20
+  attack: 14
+  defense: 8
+  qi: 3
+  prepareTime: 0.35
+  impactTime: 0.15
+  returnTime: 0.12
 --- !u!1 &1056311047
 GameObject:
   m_ObjectHideFlags: 0
@@ -714,122 +758,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9be83a017e8bb540b18812812118480, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Monster
-  monsterName: Unknow
-  maxHp: 250
-  attack: 25
-  defense: 35
---- !u!1 &1666313171
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1666313175}
-  - component: {fileID: 1666313174}
-  - component: {fileID: 1666313173}
-  - component: {fileID: 1666313172}
-  m_Layer: 0
-  m_Name: Cube
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!65 &1666313172
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1666313171}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!23 &1666313173
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1666313171}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RayTracingAccelStructBuildFlagsOverride: 0
-  m_RayTracingAccelStructBuildFlags: 1
-  m_SmallMeshCulling: 1
-  m_ForceMeshLod: -1
-  m_MeshLodSelectionBias: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_MaskInteraction: 0
-  m_AdditionalVertexStreams: {fileID: 0}
---- !u!33 &1666313174
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1666313171}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!4 &1666313175
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1666313171}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.21546, y: 0, z: 2.56823}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  target: {fileID: 2082661691}
+  monsterName: Chapeau feuillu
+  maxHp: 12
+  attack: 5
+  defense: 6
+  qi: 12
+  prepareTime: 0.35
+  impactTime: 0.15
+  returnTime: 0.12
 --- !u!1 &1680389324
 GameObject:
   m_ObjectHideFlags: 0
@@ -979,6 +916,7 @@ GameObject:
   - component: {fileID: 1902648431}
   - component: {fileID: 1902648430}
   - component: {fileID: 1902648429}
+  - component: {fileID: 1902648433}
   m_Layer: 0
   m_Name: Ally_3
   m_TagString: Untagged
@@ -1081,6 +1019,27 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1902648433
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1902648428}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9be83a017e8bb540b18812812118480, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Monster
+  target: {fileID: 718031869}
+  monsterName: Renard spirituel
+  maxHp: 14
+  attack: 11
+  defense: 5
+  qi: 6
+  prepareTime: 0.35
+  impactTime: 0.15
+  returnTime: 0.12
 --- !u!1 &2035025489
 GameObject:
   m_ObjectHideFlags: 0
@@ -1093,6 +1052,7 @@ GameObject:
   - component: {fileID: 2035025492}
   - component: {fileID: 2035025491}
   - component: {fileID: 2035025490}
+  - component: {fileID: 2035025494}
   m_Layer: 0
   m_Name: Ally_2
   m_TagString: Untagged
@@ -1195,6 +1155,27 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2035025494
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2035025489}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9be83a017e8bb540b18812812118480, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Monster
+  target: {fileID: 871655788}
+  monsterName: Golem de jade
+  maxHp: 22
+  attack: 12
+  defense: 12
+  qi: 3
+  prepareTime: 0.35
+  impactTime: 0.15
+  returnTime: 0.12
 --- !u!1 &2082661686
 GameObject:
   m_ObjectHideFlags: 0
@@ -1207,6 +1188,7 @@ GameObject:
   - component: {fileID: 2082661689}
   - component: {fileID: 2082661688}
   - component: {fileID: 2082661687}
+  - component: {fileID: 2082661691}
   m_Layer: 0
   m_Name: Enemy_1
   m_TagString: Untagged
@@ -1309,6 +1291,27 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2082661691
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2082661686}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9be83a017e8bb540b18812812118480, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Monster
+  target: {fileID: 1056311052}
+  monsterName: "B\xE9b\xE9 jiangshi"
+  maxHp: 10
+  attack: 12
+  defense: 4
+  qi: 11
+  prepareTime: 0.35
+  impactTime: 0.15
+  returnTime: 0.12
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -1322,4 +1325,3 @@ SceneRoots:
   - {fileID: 2082661690}
   - {fileID: 871655787}
   - {fileID: 718031868}
-  - {fileID: 1666313175}
