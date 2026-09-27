@@ -1,14 +1,17 @@
 using JetBrains.Annotations;
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
+using NUnit.Framework;
 
 public class Monster : MonoBehaviour
 {
     [Header("Others")]
     [SerializeField] public Monster target; //monstre cible
+    public BattleManager manager;
 
     [Header("Monster Attributes")]
-    [SerializeField] MonsterData data; // scriptable objects
+    [SerializeField] public MonsterData data; // scriptable objects
 
     [Header("Animation Time")]
     [SerializeField] float prepareTime = 0.35f;
@@ -32,9 +35,12 @@ public class Monster : MonoBehaviour
     void Start()
     {
         if (data == null) return;
-        StartCoroutine(AttackSequence(target));
     }
 
+    public void Attack(Monster target)
+    {
+        StartCoroutine(AttackSequence(target));
+    }
 
     int ComputeDamage(int attackerAttack) // calcul de damage
     {
@@ -68,12 +74,11 @@ public class Monster : MonoBehaviour
         Debug.Log(data.monsterName + " attaque " + target.data.monsterName + ".");
         yield return new WaitForSeconds(impactTime);
 
-        Color originalColor = targetrender.material.color;
         target.TakeDamage(target.ComputeDamage(data.attack));
         targetrender.material.color = Color.red;
         yield return new WaitForSeconds(returnTime);
 
-        targetrender.material.color = originalColor;
+        targetrender.material.color = target.data.monsterColor;
         transform.position = startPosition;
         Debug.Log(data.monsterName + " recule.");
     }
@@ -83,6 +88,7 @@ public class Monster : MonoBehaviour
         Debug.Log(data.monsterName + " à été vaincu !");
         yield return new WaitForSeconds(1f);
         gameObject.SetActive(false); // fait disparaitre le gameobject
+        manager.RemoveFromBattle(this);
     }
 
 }
