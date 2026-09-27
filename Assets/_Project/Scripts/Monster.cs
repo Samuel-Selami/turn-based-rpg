@@ -8,11 +8,7 @@ public class Monster : MonoBehaviour
     [SerializeField] public Monster target; //monstre cible
 
     [Header("Monster Attributes")]
-    [SerializeField] string monsterName = "Unknow";
-    [SerializeField] int maxHp = 250;
-    [SerializeField] int attack = 25;
-    [SerializeField] int defense = 35;
-    [SerializeField] int qi = 10;
+    [SerializeField] MonsterData data; // scriptable objects
 
     [Header("Animation Time")]
     [SerializeField] float prepareTime = 0.35f;
@@ -20,17 +16,29 @@ public class Monster : MonoBehaviour
     [SerializeField] float returnTime = 0.12f;
 
     int currentHp;
+    int currentQi;
+    Renderer monsterRender;
+
+    private void Awake()
+    {
+        if (data == null) return;
+
+        currentHp = data.maxHp;
+        currentQi = data.maxQi;
+        monsterRender = GetComponent<Renderer>();
+        monsterRender.material.color = data.monsterColor;
+    }
 
     void Start()
     {
-        currentHp = maxHp;
+        if (data == null) return;
         StartCoroutine(AttackSequence(target));
     }
 
 
     int ComputeDamage(int attackerAttack) // calcul de damage
     {
-        return Mathf.Max(1, (attackerAttack - defense)); // min 1 damage
+        return Mathf.Max(1, (attackerAttack - data.defense)); // min 1 damage
     }
 
     void TakeDamage(int amount) // calcul de damage reçu
@@ -42,7 +50,7 @@ public class Monster : MonoBehaviour
             StartCoroutine(DeathSequence());
         }
         else
-            Debug.Log(monsterName + " : " + currentHp + " / " + maxHp);
+            Debug.Log(data.monsterName + " : " + currentHp + " / " + data.maxHp + "hp" + " et " + currentQi + " / " + data.maxQi + "qi");
 
     }
 
@@ -51,28 +59,28 @@ public class Monster : MonoBehaviour
         if (target == null || target.currentHp <= 0)
             yield break;
 
-        Debug.Log(monsterName + " s'élance.");
+        Debug.Log(data.monsterName + " s'élance.");
         Vector3 startPosition = transform.position;
         Renderer targetrender = target.GetComponent<Renderer>();
         yield return new WaitForSeconds(prepareTime); // pause mais le reste du jeu continue.
 
         transform.position = startPosition + new Vector3(0f, 0f, 2f);
-        Debug.Log(monsterName + " attaque " + target.monsterName + ".");
+        Debug.Log(data.monsterName + " attaque " + target.data.monsterName + ".");
         yield return new WaitForSeconds(impactTime);
 
         Color originalColor = targetrender.material.color;
-        target.TakeDamage(target.ComputeDamage(attack));
+        target.TakeDamage(target.ComputeDamage(data.attack));
         targetrender.material.color = Color.red;
         yield return new WaitForSeconds(returnTime);
 
         targetrender.material.color = originalColor;
         transform.position = startPosition;
-        Debug.Log(monsterName + " recule.");
+        Debug.Log(data.monsterName + " recule.");
     }
 
     IEnumerator DeathSequence() // séquence de mort
     {
-        Debug.Log(monsterName + " à été vaincu !");
+        Debug.Log(data.monsterName + " à été vaincu !");
         yield return new WaitForSeconds(1f);
         gameObject.SetActive(false); // fait disparaitre le gameobject
     }

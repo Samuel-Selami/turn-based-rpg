@@ -487,11 +487,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Monster
   target: {fileID: 1902648433}
-  monsterName: Tortue de jade
-  maxHp: 18
-  attack: 8
-  defense: 14
-  qi: 6
+  data: {fileID: 11400000, guid: 61d3fa78e005458439283ebffc29b9d7, type: 2}
   prepareTime: 0.35
   impactTime: 0.15
   returnTime: 0.12
@@ -623,11 +619,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Monster
   target: {fileID: 2035025494}
-  monsterName: Sanglier de braise
-  maxHp: 20
-  attack: 14
-  defense: 8
-  qi: 3
+  data: {fileID: 11400000, guid: c4b9bea22c9e09d4bab0863d3c4bdc81, type: 2}
   prepareTime: 0.35
   impactTime: 0.15
   returnTime: 0.12
@@ -759,11 +751,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Monster
   target: {fileID: 2082661691}
-  monsterName: Chapeau feuillu
-  maxHp: 12
-  attack: 5
-  defense: 6
-  qi: 12
+  data: {fileID: 11400000, guid: e93a20532d300fe42b000462acd6afd3, type: 2}
   prepareTime: 0.35
   impactTime: 0.15
   returnTime: 0.12
@@ -1032,11 +1020,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Monster
   target: {fileID: 718031869}
-  monsterName: Renard spirituel
-  maxHp: 14
-  attack: 11
-  defense: 5
-  qi: 6
+  data: {fileID: 11400000, guid: d27edeb44a4711442ad6d1095ce55ec6, type: 2}
   prepareTime: 0.35
   impactTime: 0.15
   returnTime: 0.12
@@ -1168,11 +1152,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Monster
   target: {fileID: 871655788}
-  monsterName: Golem de jade
-  maxHp: 22
-  attack: 12
-  defense: 12
-  qi: 3
+  data: {fileID: 11400000, guid: 7d8dbef15398f1842afe0971c6c36a89, type: 2}
   prepareTime: 0.35
   impactTime: 0.15
   returnTime: 0.12
@@ -1304,11 +1284,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Monster
   target: {fileID: 1056311052}
-  monsterName: "B\xE9b\xE9 jiangshi"
-  maxHp: 10
-  attack: 12
-  defense: 4
-  qi: 11
+  data: {fileID: 11400000, guid: 54bad9099b34ff2478ab022af9589ef1, type: 2}
   prepareTime: 0.35
   impactTime: 0.15
   returnTime: 0.12
