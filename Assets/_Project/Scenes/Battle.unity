@@ -599,6 +599,7 @@ GameObject:
   - component: {fileID: 1056311050}
   - component: {fileID: 1056311049}
   - component: {fileID: 1056311048}
+  - component: {fileID: 1056311052}
   m_Layer: 0
   m_Name: Ally_1
   m_TagString: Untagged
@@ -701,30 +702,13 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1484505270
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1484505272}
-  - component: {fileID: 1484505271}
-  m_Layer: 0
-  m_Name: Monster
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1484505271
+--- !u!114 &1056311052
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1484505270}
+  m_GameObject: {fileID: 1056311047}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f9be83a017e8bb540b18812812118480, type: 3}
@@ -732,23 +716,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Monster
   monsterName: Unknow
   maxHp: 250
-  attack: 400
+  attack: 25
   defense: 35
---- !u!4 &1484505272
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1484505270}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.82746, y: 0.5, z: 2.21707}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1666313171
 GameObject:
   m_ObjectHideFlags: 0
@@ -1347,7 +1316,6 @@ SceneRoots:
   - {fileID: 1680389327}
   - {fileID: 339140945}
   - {fileID: 256698317}
-  - {fileID: 1484505272}
   - {fileID: 1056311051}
   - {fileID: 2035025493}
   - {fileID: 1902648432}
