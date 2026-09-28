@@ -18,7 +18,7 @@ public class Monster : MonoBehaviour
     [SerializeField] float impactTime = 0.15f;
     [SerializeField] float returnTime = 0.12f;
 
-    int currentHp;
+    public int currentHp;
     int currentQi;
     Renderer monsterRender;
 
@@ -35,11 +35,6 @@ public class Monster : MonoBehaviour
     void Start()
     {
         if (data == null) return;
-    }
-
-    public void Attack(Monster target)
-    {
-        StartCoroutine(AttackSequence(target));
     }
 
     int ComputeDamage(int attackerAttack) // calcul de damage
@@ -60,7 +55,12 @@ public class Monster : MonoBehaviour
 
     }
 
-    IEnumerator AttackSequence(Monster target) // séquence d'attaque
+    public bool IsAlive()
+    {
+        return currentHp >= 0;
+    }
+
+    public IEnumerator AttackSequence(Monster target) // séquence d'attaque
     {
         if (target == null || target.currentHp <= 0)
             yield break;
