@@ -10,12 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 956df43270aebeb4f975d4de65c80bf7, type: 3}
-  m_Name: Renard spirituel
+  m_Name: Golem
   m_EditorClassIdentifier: Assembly-CSharp::MonsterData
-  monsterColor: {r: 0.8588236, g: 0.6862745, b: 0.5058824, a: 1}
-  monsterName: "Abeille guerri\xE8re"
-  maxHp: 14
-  attack: 11
-  defense: 5
-  maxQi: 6
-  speed: 14
+  monsterColor: {r: 0.909804, g: 0.65882355, b: 0.3137255, a: 1}
+  monsterName: Golem
+  maxHp: 22
+  attack: 12
+  defense: 12
+  maxQi: 3
+  speed: 4
+  stopDistance: 2
+  moveSpeed: 7

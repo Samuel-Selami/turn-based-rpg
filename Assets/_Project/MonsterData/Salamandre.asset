@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 956df43270aebeb4f975d4de65c80bf7, type: 3}
-  m_Name: Sanglier de braise
+  m_Name: Salamandre
   m_EditorClassIdentifier: Assembly-CSharp::MonsterData
   monsterColor: {r: 0.75294125, g: 0.31764707, b: 0.23529413, a: 1}
   monsterName: Salamandre
@@ -19,3 +19,5 @@ MonoBehaviour:
   defense: 8
   maxQi: 3
   speed: 7
+  stopDistance: 2
+  moveSpeed: 7

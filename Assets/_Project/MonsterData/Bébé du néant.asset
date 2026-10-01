@@ -10,12 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 956df43270aebeb4f975d4de65c80bf7, type: 3}
-  m_Name: Tortue de jade
+  m_Name: "B\xE9b\xE9 du n\xE9ant"
   m_EditorClassIdentifier: Assembly-CSharp::MonsterData
-  monsterColor: {r: 0.37254903, g: 0.5019608, b: 0.64705884, a: 1}
-  monsterName: Squelette
-  maxHp: 18
-  attack: 8
-  defense: 14
-  maxQi: 6
-  speed: 4
+  monsterColor: {r: 0.3803922, g: 0.24705884, b: 0.62352943, a: 1}
+  monsterName: "B\xE9b\xE9 du n\xE9ant"
+  maxHp: 10
+  attack: 12
+  defense: 4
+  maxQi: 11
+  speed: 12
+  stopDistance: 2
+  moveSpeed: 7

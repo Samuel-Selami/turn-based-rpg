@@ -541,7 +541,6 @@ MonoBehaviour:
   manager: {fileID: 0}
   data: {fileID: 11400000, guid: 61d3fa78e005458439283ebffc29b9d7, type: 2}
   prepareTime: 0.35
-  impactTime: 0.15
   returnTime: 0.12
   currentHp: 0
 --- !u!1001 &744215968
@@ -738,7 +737,6 @@ MonoBehaviour:
   manager: {fileID: 0}
   data: {fileID: 11400000, guid: c4b9bea22c9e09d4bab0863d3c4bdc81, type: 2}
   prepareTime: 0.35
-  impactTime: 0.15
   returnTime: 0.12
   currentHp: 0
 --- !u!1 &902877835
@@ -902,7 +900,6 @@ MonoBehaviour:
   manager: {fileID: 0}
   data: {fileID: 11400000, guid: e93a20532d300fe42b000462acd6afd3, type: 2}
   prepareTime: 0.35
-  impactTime: 0.15
   returnTime: 0.12
   currentHp: 0
 --- !u!1001 &1351566800
@@ -989,7 +986,6 @@ MonoBehaviour:
   manager: {fileID: 357924470}
   data: {fileID: 11400000, guid: 54bad9099b34ff2478ab022af9589ef1, type: 2}
   prepareTime: 0.35
-  impactTime: 0.15
   returnTime: 0.12
   currentHp: 0
 --- !u!1 &1563747061 stripped
@@ -1012,7 +1008,6 @@ MonoBehaviour:
   manager: {fileID: 357924470}
   data: {fileID: 11400000, guid: c4b9bea22c9e09d4bab0863d3c4bdc81, type: 2}
   prepareTime: 0.35
-  impactTime: 0.15
   returnTime: 0.12
   currentHp: 0
 --- !u!1001 &1658478580
@@ -1099,7 +1094,6 @@ MonoBehaviour:
   manager: {fileID: 357924470}
   data: {fileID: 11400000, guid: e93a20532d300fe42b000462acd6afd3, type: 2}
   prepareTime: 0.35
-  impactTime: 0.15
   returnTime: 0.12
   currentHp: 0
 --- !u!1 &1675003035 stripped
@@ -1122,7 +1116,6 @@ MonoBehaviour:
   manager: {fileID: 357924470}
   data: {fileID: 11400000, guid: 61d3fa78e005458439283ebffc29b9d7, type: 2}
   prepareTime: 0.35
-  impactTime: 0.15
   returnTime: 0.12
   currentHp: 0
 --- !u!1 &1680389324
@@ -1456,7 +1449,6 @@ MonoBehaviour:
   manager: {fileID: 0}
   data: {fileID: 11400000, guid: d27edeb44a4711442ad6d1095ce55ec6, type: 2}
   prepareTime: 0.35
-  impactTime: 0.15
   returnTime: 0.12
   currentHp: 0
 --- !u!1 &2035025489
@@ -1589,7 +1581,6 @@ MonoBehaviour:
   manager: {fileID: 0}
   data: {fileID: 11400000, guid: 7d8dbef15398f1842afe0971c6c36a89, type: 2}
   prepareTime: 0.35
-  impactTime: 0.15
   returnTime: 0.12
   currentHp: 0
 --- !u!1001 &2070600660
@@ -1676,7 +1667,6 @@ MonoBehaviour:
   manager: {fileID: 357924470}
   data: {fileID: 11400000, guid: 7d8dbef15398f1842afe0971c6c36a89, type: 2}
   prepareTime: 0.35
-  impactTime: 0.15
   returnTime: 0.12
   currentHp: 0
 --- !u!1 &2082661686
@@ -1809,7 +1799,6 @@ MonoBehaviour:
   manager: {fileID: 0}
   data: {fileID: 11400000, guid: 54bad9099b34ff2478ab022af9589ef1, type: 2}
   prepareTime: 0.35
-  impactTime: 0.15
   returnTime: 0.12
   currentHp: 0
 --- !u!1001 &2091482532
@@ -1896,7 +1885,6 @@ MonoBehaviour:
   manager: {fileID: 357924470}
   data: {fileID: 11400000, guid: d27edeb44a4711442ad6d1095ce55ec6, type: 2}
   prepareTime: 0.35
-  impactTime: 0.15
   returnTime: 0.12
   currentHp: 0
 --- !u!1660057539 &9223372036854775807

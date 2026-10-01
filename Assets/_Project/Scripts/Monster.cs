@@ -12,9 +12,8 @@ public class Monster : MonoBehaviour
     [Header("Monster Attributes")]
     [SerializeField] public MonsterData data; // scriptable objects
 
-    [Header("Animation Time")]
+    [Header("Animations")]
     [SerializeField] float prepareTime = 0.35f;
-    [SerializeField] float impactTime = 0.15f;
     [SerializeField] float returnTime = 0.12f;
     Animator animator;
 
@@ -51,7 +50,7 @@ public class Monster : MonoBehaviour
             StartCoroutine(DeathSequence());
         }
         else
-            animator.SetTrigger("Hit"); //anim de takedamage
+            StartCoroutine(MonsterAnimation("Hit")); //anim takedamage
         Debug.Log(data.monsterName + " : " + currentHp + " / " + data.maxHp + "hp" + " et " + currentQi + " / " + data.maxQi + "qi");
 
     }
@@ -61,41 +60,67 @@ public class Monster : MonoBehaviour
         return currentHp >= 0;
     }
 
+    IEnumerator MonsterAnimation(string state)
+    {
+        animator.SetTrigger(state);
+        yield return null;
+
+        while (!animator.GetCurrentAnimatorStateInfo(0).IsName(state))
+            yield return null;
+
+        while (animator.GetCurrentAnimatorStateInfo(0).normalizedTime < 1f)
+            yield return null;
+    }
+
     public IEnumerator AttackSequence(Monster target) // séquence d'attaque
     {
         if (target == null || target.currentHp <= 0)
             yield break;
+
         // var
         Renderer targetrender = target.GetComponentInChildren<Renderer>();
         Color originalColor = targetrender.material.color;
+        Vector3 direction = (target.transform.position - transform.position).normalized;
+        Vector3 destination = target.transform.position - direction * data.stopDistance;
+        Quaternion startRotation = transform.rotation;
+        transform.LookAt(target.transform);
 
         //sequence :
+
         Debug.Log(data.monsterName + " s'élance.");
         Vector3 startPosition = transform.position;
-        yield return new WaitForSeconds(prepareTime); // pause mais le reste du jeu continue.
+        yield return new WaitForSeconds(prepareTime);
 
-        transform.position = startPosition + new Vector3(0f, 0f, 2f);
-        // anim moove on et off
+        animator.SetBool("Moving", true);
+        while (transform.position != destination)
+        {
+            transform.position = Vector3.MoveTowards(transform.position, destination, data.moveSpeed * Time.deltaTime);
+            yield return null;
+        }
+        animator.SetBool("Moving", false);
         Debug.Log(data.monsterName + " attaque " + target.data.monsterName + ".");
-        yield return new WaitForSeconds(impactTime);
+        yield return StartCoroutine(MonsterAnimation("Attack")); //anim attack
 
-        animator.SetTrigger("Attack"); //anim d'attaque
         target.TakeDamage(target.ComputeDamage(data.attack));
         targetrender.material.color = Color.red;
         yield return new WaitForSeconds(returnTime);
 
         targetrender.material.color = originalColor;
-        //anim moove on et off
-        transform.position = startPosition;
-        //Debug.Log(data.monsterName + " recule.");
+        animator.SetBool("Moving", true);
+        while (transform.position != startPosition)
+        {
+            transform.position = Vector3.MoveTowards(transform.position, startPosition, data.moveSpeed * Time.deltaTime);
+            yield return null;
+        }
+        animator.SetBool("Moving", false);
+        transform.rotation = startRotation;
     }
 
     IEnumerator DeathSequence() // séquence de mort
     {
-        animator.SetTrigger("Die");
+        yield return StartCoroutine(MonsterAnimation("Die")); //anim die
         Debug.Log(data.monsterName + " à été vaincu !");
-        yield return new WaitForSeconds(1f);
-        gameObject.SetActive(false); // fait disparaitre le gameobject
+        gameObject.SetActive(false);
         manager.RemoveFromBattle(this);
     }
 

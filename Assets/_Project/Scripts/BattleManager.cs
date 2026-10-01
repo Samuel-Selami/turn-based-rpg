@@ -35,9 +35,6 @@ public class BattleManager : MonoBehaviour
                         yield return null;
                     yield return StartCoroutine(ally.AttackSequence(PickTarget(ennemyTeam)));
                 }
-
-
-
             }
             // ENNEMY
             state = BattleState.EnnemyTurn;

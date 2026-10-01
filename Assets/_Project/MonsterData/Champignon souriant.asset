@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 956df43270aebeb4f975d4de65c80bf7, type: 3}
-  m_Name: Chapeau feuillu
+  m_Name: Champignon souriant
   m_EditorClassIdentifier: Assembly-CSharp::MonsterData
   monsterColor: {r: 0.64705884, g: 0.75294125, b: 0.5921569, a: 1}
   monsterName: Champignon souriant
@@ -19,3 +19,5 @@ MonoBehaviour:
   defense: 6
   maxQi: 12
   speed: 9
+  stopDistance: 2
+  moveSpeed: 7
