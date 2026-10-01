@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Chapeau feuillu
   m_EditorClassIdentifier: Assembly-CSharp::MonsterData
   monsterColor: {r: 0.64705884, g: 0.75294125, b: 0.5921569, a: 1}
-  monsterName: Chapeau feuillu
+  monsterName: Champignon souriant
   maxHp: 12
   attack: 5
   defense: 6

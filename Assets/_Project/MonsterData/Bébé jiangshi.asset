@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: "B\xE9b\xE9 jiangshi"
   m_EditorClassIdentifier: Assembly-CSharp::MonsterData
   monsterColor: {r: 0.3803922, g: 0.24705884, b: 0.62352943, a: 1}
-  monsterName: "B\xE9b\xE9 jiangshi"
+  monsterName: "B\xE9b\xE9 du n\xE9ant"
   maxHp: 10
   attack: 12
   defense: 4

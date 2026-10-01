@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Golem de jade
   m_EditorClassIdentifier: Assembly-CSharp::MonsterData
   monsterColor: {r: 0.909804, g: 0.65882355, b: 0.3137255, a: 1}
-  monsterName: Golem de jade
+  monsterName: Golem
   maxHp: 22
   attack: 12
   defense: 12

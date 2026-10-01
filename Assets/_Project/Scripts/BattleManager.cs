@@ -18,28 +18,42 @@ public class BattleManager : MonoBehaviour
         foreach (Monster ally in ennemyTeam) ally.manager = this; // ennemyteam
         foreach (Monster ally in playerTeam) ally.manager = this; // playerteam
         StartCoroutine(BattleLoop());
+
     }
 
     IEnumerator BattleLoop() // boucle de combat
     {
-        state = BattleState.PlayerTurn;
-        foreach (Monster ally in new List<Monster>(playerTeam))
+        while (playerTeam.Count > 0 && ennemyTeam.Count > 0)
         {
-            if (ally.IsAlive())
-                yield return StartCoroutine(ally.AttackSequence(PickTarget(ennemyTeam)));
-        }
-        state = BattleState.EnnemyTurn;
-        foreach (Monster ally in new List<Monster>(ennemyTeam))
-        {
-            if (ally.IsAlive())
-                yield return StartCoroutine(ally.AttackSequence(PickTarget(playerTeam)));
-        }
+            // PLAYER
+            state = BattleState.PlayerTurn;
+            foreach (Monster ally in new List<Monster>(playerTeam))
+            {
+                if (ally.IsAlive())
+                {
+                    while (!Input.GetKeyDown(KeyCode.Space))
+                        yield return null;
+                    yield return StartCoroutine(ally.AttackSequence(PickTarget(ennemyTeam)));
+                }
 
+
+
+            }
+            // ENNEMY
+            state = BattleState.EnnemyTurn;
+            foreach (Monster ally in new List<Monster>(ennemyTeam))
+            {
+                if (ally.IsAlive())
+                    yield return StartCoroutine(ally.AttackSequence(PickTarget(playerTeam)));
+            }
+        }
+        // VICTORY
         if (ennemyTeam.Count == 0)
         {
             state = BattleState.Victory;
             Debug.Log("Vous avez remportez le combat !");
         }
+        //DEFEAT
         else if (playerTeam.Count == 0)
         {
             state = BattleState.Defeat;
