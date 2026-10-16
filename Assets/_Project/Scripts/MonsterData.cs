@@ -9,7 +9,7 @@ public class MonsterData : ScriptableObject
     public int maxHp;
     public int attack;
     public int defense;
-    public int maxQi;
+    public int maxMana;
     public int speed;
 
     [Header("Animations")]

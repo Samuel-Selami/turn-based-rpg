@@ -17,7 +17,7 @@ MonoBehaviour:
   maxHp: 20
   attack: 14
   defense: 8
-  maxQi: 3
+  maxMana: 3
   speed: 7
   stopDistance: 2
   moveSpeed: 7

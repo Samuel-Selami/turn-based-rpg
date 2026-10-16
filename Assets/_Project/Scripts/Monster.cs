@@ -18,7 +18,7 @@ public class Monster : MonoBehaviour
     Animator animator;
 
     public int currentHp;
-    int currentQi;
+    int currentMana;
     Renderer monsterRender;
 
     private void Awake()
@@ -26,7 +26,7 @@ public class Monster : MonoBehaviour
         if (data == null) return;
 
         currentHp = data.maxHp;
-        currentQi = data.maxQi;
+        currentMana = data.maxMana;
         monsterRender = GetComponentInChildren<Renderer>();
         animator = GetComponent<Animator>();
     }
@@ -51,7 +51,7 @@ public class Monster : MonoBehaviour
         }
         else
             StartCoroutine(MonsterAnimation("Hit")); //anim takedamage
-        Debug.Log(data.monsterName + " : " + currentHp + " / " + data.maxHp + "hp" + " et " + currentQi + " / " + data.maxQi + "qi");
+        Debug.Log(data.monsterName + " : " + currentHp + " / " + data.maxHp + "hp" + " et " + currentMana + " / " + data.maxMana + "mana");
 
     }
 
@@ -67,8 +67,11 @@ public class Monster : MonoBehaviour
 
         while (!animator.GetCurrentAnimatorStateInfo(0).IsName(state))
             yield return null;
+    }
 
-        while (animator.GetCurrentAnimatorStateInfo(0).normalizedTime < 1f)
+    IEnumerator WaitUntil(float point)
+    {
+        while (animator.GetCurrentAnimatorStateInfo(0).normalizedTime < point)
             yield return null;
     }
 
@@ -101,9 +104,10 @@ public class Monster : MonoBehaviour
         Debug.Log(data.monsterName + " attaque " + target.data.monsterName + ".");
         yield return StartCoroutine(MonsterAnimation("Attack")); //anim attack
 
+        yield return StartCoroutine(WaitUntil(0.4f));
         target.TakeDamage(target.ComputeDamage(data.attack));
         targetrender.material.color = Color.red;
-        yield return new WaitForSeconds(returnTime);
+        yield return StartCoroutine(WaitUntil(1f));
 
         targetrender.material.color = originalColor;
         animator.SetBool("Moving", true);
