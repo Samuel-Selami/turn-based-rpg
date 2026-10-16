@@ -18,7 +18,7 @@ public class Monster : MonoBehaviour
     Animator animator;
 
     public int currentHp;
-    int currentMana;
+    public int currentMana;
     Renderer monsterRender;
 
     private void Awake()
@@ -55,9 +55,20 @@ public class Monster : MonoBehaviour
 
     }
 
+    public float HpRatio()
+    {
+        float ratio = (float)currentHp / data.maxHp;
+        return ratio;
+    }
+    public float ManaRatio()
+    {
+        float ratio = (float)currentMana / data.maxMana;
+        return ratio;
+    }
+
     public bool IsAlive()
     {
-        return currentHp >= 0;
+        return currentHp > 0;
     }
 
     IEnumerator MonsterAnimation(string state)

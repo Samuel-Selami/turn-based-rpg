@@ -12,12 +12,18 @@ public class BattleManager : MonoBehaviour
     [SerializeField] List<Monster> ennemyTeam;
     BattleManager manager;
     BattleState state;
+    [SerializeField] List<MonsterPanel> playerPanels;
 
     void Start()
     {
         foreach (Monster ally in ennemyTeam) ally.manager = this; // ennemyteam
         foreach (Monster ally in playerTeam) ally.manager = this; // playerteam
         StartCoroutine(BattleLoop());
+
+        for (int i = 0; i < playerPanels.Count; i++)
+        {
+            playerPanels[i].monster = playerTeam[i];
+        }
 
     }
 
