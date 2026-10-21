@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Golem
   m_EditorClassIdentifier: Assembly-CSharp::MonsterData
   monsterColor: {r: 0.909804, g: 0.65882355, b: 0.3137255, a: 1}
+  monsterProfil: {fileID: 21300000, guid: 5e6719bb0a801c549b70ddc54fcdb5bc, type: 3}
   monsterName: Golem
   maxHp: 22
   attack: 12

@@ -5,6 +5,7 @@ public class MonsterData : ScriptableObject
 {
     [Header("Monster Attributes")]
     public Color monsterColor;
+    public Sprite monsterProfil;
     public string monsterName;
     public int maxHp;
     public int attack;

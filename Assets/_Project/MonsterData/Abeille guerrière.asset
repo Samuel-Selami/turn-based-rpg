@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: "Abeille guerri\xE8re"
   m_EditorClassIdentifier: Assembly-CSharp::MonsterData
   monsterColor: {r: 0.8588236, g: 0.6862745, b: 0.5058824, a: 1}
+  monsterProfil: {fileID: 21300000, guid: f1d5d93ca3556eb4d92af4de983c2d23, type: 3}
   monsterName: "Abeille guerri\xE8re"
   maxHp: 14
   attack: 11

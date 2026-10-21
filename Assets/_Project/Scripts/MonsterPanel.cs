@@ -13,8 +13,12 @@ public class MonsterPanel : MonoBehaviour
     [SerializeField] TMP_Text health;
     [SerializeField] UnityEngine.UI.Image manaBar;
     [SerializeField] TMP_Text mana;
+    [SerializeField] UnityEngine.UI.Image monsterProfil;
 
-
+    void Start()
+    {
+        monsterProfil.sprite = monster.data.monsterProfil;
+    }
 
     void Update()
     {
