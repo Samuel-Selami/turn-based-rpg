@@ -2347,7 +2347,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: d8f4af4a8ed8b4845b03029bc9e74747, type: 2}
+  - {fileID: 2100000, guid: d9897074e78e5384ea1576423e6b28cf, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2413,7 +2413,7 @@ GameObject:
   - component: {fileID: 2628132802033989185}
   - component: {fileID: 5065196846459763982}
   m_Layer: 0
-  m_Name: FX_BattleMonsterSelection
+  m_Name: FX_BattleAllyMonsterSelection
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7048,7 +7048,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 1d8e588a047108b4db55c6c8a975dc77, type: 2}
+  - {fileID: 2100000, guid: dab3e56a836e1654b8e9cf8615aa774d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

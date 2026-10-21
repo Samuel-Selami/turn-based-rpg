@@ -15,6 +15,9 @@ public class BattleManager : MonoBehaviour
     [SerializeField] List<MonsterPanel> playerPanels;
     [SerializeField] ActionMenu actionMenu;
     List<Monster> chosenActor = new List<Monster>();
+    List<Monster> chosenTarget = new List<Monster>();
+    [SerializeField] GameObject selectionAllyVfx;
+    [SerializeField] GameObject selectionEnnemyVfx;
 
     private void Awake()
     {
@@ -40,32 +43,57 @@ public class BattleManager : MonoBehaviour
 
             //demande
             chosenActor.Clear();
+            chosenTarget.Clear();
+
             for (int i = 0; i < playerPanels.Count; i++)
             {
                 {
                     Monster ally = playerPanels[i].monster;
                     if (ally.IsAlive())
                     {
-                        playerPanels[i].transform.localScale = Vector3.one * 1.2f; //pannel scale up
+                        GameObject allyVfx = Instantiate(selectionAllyVfx, ally.transform); // VFX ally selection spawn
+                        playerPanels[i].transform.localScale = Vector3.one * 1.2f; // pannel scale up
                         actionMenu.fightChosen = false;
                         actionMenu.gameObject.SetActive(true);
 
                         while (!actionMenu.fightChosen)
                             yield return null;
 
+                        Destroy(allyVfx);
+                        int index = 0;
+                        GameObject ennemyVfx = Instantiate(selectionEnnemyVfx, ennemyTeam[index].transform);// VFX enenmy selection first spawn
                         actionMenu.gameObject.SetActive(false);
+
+                        while (!Input.GetKeyDown(KeyCode.Return)) //select ennemy
+                        {
+                            int direction = 0;
+                            if (Input.GetKeyDown(KeyCode.RightArrow)) direction = 1;
+                            if (Input.GetKeyDown(KeyCode.LeftArrow)) direction = -1;
+
+                            if (direction != 0) //select moove ennemy
+                            {
+                                index = (index + direction + ennemyTeam.Count) % ennemyTeam.Count;
+                                Destroy(ennemyVfx);
+
+                                ennemyVfx = Instantiate(selectionEnnemyVfx, ennemyTeam[index].transform);// VFX enenmy selection spawn
+                            }
+                            yield return null;
+                        }
+
+                        Destroy(ennemyVfx);
                         playerPanels[i].transform.localScale = Vector3.one; //pannel normal scale
+                        chosenTarget.Add(ennemyTeam[index]);
                         chosenActor.Add(ally);
                     }
                 }
             }
 
                 //action
-                foreach (Monster ally in chosenActor)
+                for (int i = 0; i < chosenActor.Count; i++)
                 {
-                    if (ally.IsAlive())
+                    if (chosenActor[i].IsAlive())
                     {
-                        yield return StartCoroutine(ally.AttackSequence(PickTarget(ennemyTeam)));
+                        yield return StartCoroutine(chosenActor[i].AttackSequence(chosenTarget[i]));
                     }
                 }
 
