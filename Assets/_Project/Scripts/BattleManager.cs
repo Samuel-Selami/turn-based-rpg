@@ -62,14 +62,13 @@ public class BattleManager : MonoBehaviour
                         Destroy(allyVfx);
                         int index = 0;
                         GameObject ennemyVfx = Instantiate(selectionEnnemyVfx, ennemyTeam[index].transform);// VFX enenmy selection first spawn
+
                         actionMenu.gameObject.SetActive(false);
+                        yield return null;
 
-                        while (!Input.GetKeyDown(KeyCode.Return)) //select ennemy
+                        while (!BattleInput.Confirm()) //select ennemy
                         {
-                            int direction = 0;
-                            if (Input.GetKeyDown(KeyCode.RightArrow)) direction = 1;
-                            if (Input.GetKeyDown(KeyCode.LeftArrow)) direction = -1;
-
+                            int direction = BattleInput.Horizontal();
                             if (direction != 0) //select moove ennemy
                             {
                                 index = (index + direction + ennemyTeam.Count) % ennemyTeam.Count;
