@@ -17,6 +17,7 @@ public class BattleManager : MonoBehaviour
 
     [SerializeField] GameObject selectionAllyVfx;
     [SerializeField] GameObject selectionEnnemyVfx;
+    [SerializeField] GameObject enemyTagPrefab;
     bool commandCancelled;
 
     private void Awake()
@@ -24,6 +25,12 @@ public class BattleManager : MonoBehaviour
         for (int i = 0; i < playerPanels.Count; i++)
         {
             playerPanels[i].monster = playerTeam[i];
+        }
+
+        foreach (Monster enemy in ennemyTeam)
+        {
+            GameObject tag = Instantiate(enemyTagPrefab, enemy.transform);
+            tag.GetComponent<EnemyTag>().monster = enemy;
         }
     }
 
