@@ -3,10 +3,9 @@ using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.DualShock;
 using UnityEngine.InputSystem.XInput;
 
+public enum PadType { Keyboard, Xbox, Playstation, Generic }
 public static class BattleInput
 {
-
-    public enum PadType { Keyboard, Xbox, Playstation, Generic }
 
     public static PadType CurrentPad()
     {

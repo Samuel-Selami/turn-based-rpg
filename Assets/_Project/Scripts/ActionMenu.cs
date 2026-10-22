@@ -3,14 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+public enum ActionType { Fight, Abilities, Guard, Objects, Pact };
 public class ActionMenu : MonoBehaviour
 {
-    public bool fightChosen = false;
+    public bool actionChosen = false;
     [SerializeField] List<RectTransform> actionButtons;
     [SerializeField] RectTransform selectionArrow;
     [SerializeField] Vector2 arrowOffset;
     int index = 0;
 
+    public ActionType chosenAction;
 
     void Highlight (int i)
     {
@@ -34,16 +36,14 @@ public class ActionMenu : MonoBehaviour
 
         if (BattleInput.Confirm())
         {
-            if (index == 0)
-                fightChosen = true;
-            else
-                Debug.Log("Pas encore disponible");
+            chosenAction = (ActionType)index;
+            actionChosen = true;
         }
 
     }
     public void ChooseFight()
     {
-        fightChosen = true;
+        actionChosen = true;
     }
 
     public void ChooseAbilities()

@@ -21,6 +21,7 @@ public class Monster : MonoBehaviour
     public int currentMana;
     Renderer monsterRender;
     public Monster chosenTarget;
+    public bool isGuarding = false;
 
     private void Awake()
     {
@@ -39,7 +40,11 @@ public class Monster : MonoBehaviour
 
     int ComputeDamage(int attackerAttack) // calcul de damage
     {
-        return Mathf.Max(1, (attackerAttack - data.defense)); // min 1 damage
+        int defense = data.defense; // revient à la normal
+        if (isGuarding)
+            defense = defense * 2;
+
+        return Mathf.Max(1, (attackerAttack - defense)); // min 1 damage
     }
 
     void TakeDamage(int amount) // calcul de damage reçu

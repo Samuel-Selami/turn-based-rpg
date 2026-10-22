@@ -111,6 +111,7 @@ public class BattleManager : MonoBehaviour
     {
         commandCancelled = false;
         Monster ally = playerPanels[panelIndex].monster;
+        ally.isGuarding = false;
 
         GameObject allyVfx = Instantiate(selectionAllyVfx, ally.transform); // VFX ally selection spawn
         playerPanels[panelIndex].transform.localScale = Vector3.one * 1.2f; // pannel scale up
@@ -125,11 +126,11 @@ public class BattleManager : MonoBehaviour
             bool confirmed = false;
             bool cancelled = false;
 
-            actionMenu.fightChosen = false;
+            actionMenu.actionChosen = false;
             actionMenu.gameObject.SetActive(true);
 
             bool menuCancelled = false;
-            while (!actionMenu.fightChosen && !menuCancelled)
+            while (!actionMenu.actionChosen && !menuCancelled)
             {
                 if (BattleInput.Cancel())
                     menuCancelled = true;
@@ -143,6 +144,15 @@ public class BattleManager : MonoBehaviour
                 ordered = true;
                 continue;
             }
+            if (actionMenu.chosenAction == ActionType.Guard) //Guard
+            {
+                ally.isGuarding = true;
+                ordered = true;
+                continue;
+            }
+            if (actionMenu.chosenAction != ActionType.Fight)
+                continue;
+
             yield return null;
 
             ennemyVfx = Instantiate(selectionEnnemyVfx, ennemyTeam[index].transform);// VFX enenmy selection first spawn
