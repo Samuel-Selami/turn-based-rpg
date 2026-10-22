@@ -20,6 +20,7 @@ public class Monster : MonoBehaviour
     public int currentHp;
     public int currentMana;
     Renderer monsterRender;
+    public Monster chosenTarget;
 
     private void Awake()
     {

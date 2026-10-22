@@ -1,13 +1,41 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.DualShock;
+using UnityEngine.InputSystem.XInput;
 
 public static class BattleInput
 {
+
+    public enum PadType { Keyboard, Xbox, Playstation, Generic }
+
+    public static PadType CurrentPad()
+    {
+        if (Gamepad.current == null)
+            return PadType.Keyboard;
+
+        if (Gamepad.current is DualShockGamepad)
+            return PadType.Playstation;
+
+        if (Gamepad.current is XInputController)
+            return PadType.Xbox;
+
+        return PadType.Generic;
+    }
     public static bool Confirm()
     {
         if (Input.GetKeyDown(KeyCode.Return))
             return true;
         if (Gamepad.current != null && Gamepad.current.buttonSouth.wasPressedThisFrame)
+            return true;
+
+        return false;
+    }
+
+    public static bool Cancel()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+            return true;
+        if (Gamepad.current != null && Gamepad.current.buttonEast.wasPressedThisFrame)
             return true;
 
         return false;
@@ -46,4 +74,6 @@ public static class BattleInput
 
         return 0;
     }
+
+
 }
