@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d7d00df0ce45d34eaf8c1ef0c385935, type: 3}
+  m_Name: Ability_DanseDesLames
+  m_EditorClassIdentifier: Assembly-CSharp::AbilityData
+  abilityIcon: {fileID: 0}
+  abilityName: Danse des Lames
+  abilityType: 0
+  abilityDescription: "Ex\xE9cute une rotation fr\xE9n\xE9tique de lames d'acier. Touche l'ensemble des cibles sur le terrain et inflige {power} d\xE9g\xE2ts. "
+  abilityVfx: {fileID: 0}
+  abilityEffect: 0
+  powerType: 0
+  power: 10
+  duration: 1
+  abilityCostResource: 0
+  abilityCostType: 0
+  abilityCost: 6
+  accuracy: 80
+  targetSide: 0
+  targetMode: 1

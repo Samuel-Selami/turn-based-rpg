@@ -3,7 +3,7 @@ using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.DualShock;
 using UnityEngine.InputSystem.XInput;
 
-public enum PadType { Keyboard, Xbox, Playstation, Generic }
+public enum PadType { Unknow, Keyboard, Xbox, Playstation, Generic }
 public static class BattleInput
 {
 

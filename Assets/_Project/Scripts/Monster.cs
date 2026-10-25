@@ -21,6 +21,7 @@ public class Monster : MonoBehaviour
     public int currentMana;
     Renderer monsterRender;
     public Monster chosenTarget;
+    public AbilityData chosenAbility;
     public bool isGuarding = false;
 
     private void Awake()
@@ -60,6 +61,65 @@ public class Monster : MonoBehaviour
         Debug.Log(data.monsterName + " : " + currentHp + " / " + data.maxHp + "hp" + " et " + currentMana + " / " + data.maxMana + "mana");
 
     }
+
+    void Heal(int amount) // calcul de heal reçu
+    {
+            currentHp = Mathf.Min((currentHp + amount), data.maxHp);
+    }
+
+    public void ApplyAbility(AbilityData ability) // sur la cible
+    {
+
+        int amount = ability.power;
+
+        if (ability.powerType == AbilityData.PowerType.Percent)
+            amount = (data.maxHp * amount) / 100;
+
+        if (ability.abilityEffect == AbilityData.AbilityEffect.Damage)
+            TakeDamage(amount);
+        else
+            Heal(amount);
+
+    }
+
+    public int AbilityCostValue(AbilityData ability)
+    {
+        int amount = ability.abilityCost;
+
+        if (ability.abilityCostResource == AbilityData.AbilityCostResource.Mana)
+        {
+            if (ability.abilityCostType == AbilityData.AbilityCostType.Percent)
+                amount = (data.maxMana * amount) / 100;
+        }
+
+        if (ability.abilityCostResource == AbilityData.AbilityCostResource.Hp)
+        {
+            if (ability.abilityCostType == AbilityData.AbilityCostType.Percent)
+                amount = (data.maxHp * amount) / 100;
+        }
+        return amount;
+    }
+
+    public bool CanPayAbility(AbilityData ability)
+    {
+        int amount = AbilityCostValue(ability);
+
+        if (ability.abilityCostResource == AbilityData.AbilityCostResource.Mana)
+            return currentMana >= amount;
+        else
+            return currentHp >= amount;
+
+    }
+    public void PayCostAbility(AbilityData ability) // sur le lanceur
+    {
+    int amount = AbilityCostValue(ability);
+
+        if (ability.abilityCostResource == AbilityData.AbilityCostResource.Mana)
+                currentMana = Mathf.Max(0, (currentMana - amount));
+        if (ability.abilityCostResource == AbilityData.AbilityCostResource.Hp)
+                TakeDamage(amount);
+    }
+
 
     public float HpRatio()
     {

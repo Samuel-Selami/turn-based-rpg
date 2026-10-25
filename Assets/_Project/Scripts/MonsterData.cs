@@ -1,3 +1,5 @@
+using NUnit.Framework;
+using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "NewMonster", menuName = "Scriptable Objects/MonsterData")]
@@ -12,6 +14,7 @@ public class MonsterData : ScriptableObject
     public int defense;
     public int maxMana;
     public int speed;
+    public List<AbilityData> abilities; 
 
     [Header("Animations")]
     public float stopDistance;

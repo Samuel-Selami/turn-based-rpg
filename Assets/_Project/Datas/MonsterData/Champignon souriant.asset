@@ -10,15 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 956df43270aebeb4f975d4de65c80bf7, type: 3}
-  m_Name: "Abeille guerri\xE8re"
+  m_Name: Champignon souriant
   m_EditorClassIdentifier: Assembly-CSharp::MonsterData
-  monsterColor: {r: 0.8588236, g: 0.6862745, b: 0.5058824, a: 1}
-  monsterProfil: {fileID: 21300000, guid: f1d5d93ca3556eb4d92af4de983c2d23, type: 3}
-  monsterName: "Abeille guerri\xE8re"
-  maxHp: 14
-  attack: 11
-  defense: 5
-  maxMana: 6
-  speed: 14
+  monsterColor: {r: 0.64705884, g: 0.75294125, b: 0.5921569, a: 1}
+  monsterProfil: {fileID: 21300000, guid: 3cac1be44b19bca4a8087a0dfd878737, type: 3}
+  monsterName: Champignon souriant
+  maxHp: 12
+  attack: 5
+  defense: 6
+  maxMana: 12
+  speed: 9
+  abilities:
+  - {fileID: 11400000, guid: 926bd4fb17ed69648970e9ad1686b142, type: 2}
   stopDistance: 2
   moveSpeed: 7

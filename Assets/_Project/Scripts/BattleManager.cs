@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using static UnityEngine.GraphicsBuffer;
 
@@ -80,45 +81,65 @@ public class BattleManager : MonoBehaviour
                 }
             }
 
-                //action
-                for (int a = 0; a < playerPanels.Count; a++)
-                {
-                    Monster ally = playerPanels[a].monster;
-                    if (ally.IsAlive() && ally.chosenTarget != null)
-                        {
-                        yield return StartCoroutine(ally.AttackSequence(ally.chosenTarget));
-                        ally.chosenTarget = null;
-                        }
-            }
+            //action
+            for (int a = 0; a < playerPanels.Count; a++)
+            {
+                Monster ally = playerPanels[a].monster;
 
-                // ENNEMY
-                state = BattleState.EnnemyTurn;
-                foreach (Monster ally in new List<Monster>(ennemyTeam))
+                if (ally.IsAlive() && ally.chosenTarget != null && !ally.chosenTarget.IsAlive())
                 {
-                    if (ally.IsAlive())
-                        yield return StartCoroutine(ally.AttackSequence(PickTarget(playerTeam)));
+                    if (ally.chosenAbility != null && (ally.chosenAbility.targetSide == AbilityData.TargetSide.Allies || ally.chosenAbility.targetSide == AbilityData.TargetSide.Self))
+                        ally.chosenTarget = null;
+                    else
+                        ally.chosenTarget = PickTarget(ennemyTeam);
+                }
+
+                if (ally.IsAlive() && ally.chosenTarget != null)
+                {
+                    if (ally.chosenAbility != null)
+                    {
+                        ally.PayCostAbility(ally.chosenAbility);
+                        ally.chosenTarget.ApplyAbility(ally.chosenAbility);
+                        ally.chosenAbility = null;
+                    }
+                    else
+                    {
+                        yield return StartCoroutine(ally.AttackSequence(ally.chosenTarget));
+                    }
+
+                    ally.chosenTarget = null;
                 }
             }
-            // VICTORY
-            if (ennemyTeam.Count == 0)
-            {
-                state = BattleState.Victory;
-                Debug.Log("Vous avez remportez le combat !");
-            }
-            //DEFEAT
-            else if (playerTeam.Count == 0)
-            {
-                state = BattleState.Defeat;
-                Debug.Log("Vous avez été défait !");
-            }
 
+            // ENNEMY
+            state = BattleState.EnnemyTurn;
+            foreach (Monster ally in new List<Monster>(ennemyTeam))
+            {
+                if (ally.IsAlive())
+                    yield return StartCoroutine(ally.AttackSequence(PickTarget(playerTeam)));
+            }
         }
+        // VICTORY
+        if (ennemyTeam.Count == 0)
+        {
+            state = BattleState.Victory;
+            Debug.Log("Vous avez remportez le combat !");
+        }
+        //DEFEAT
+        else if (playerTeam.Count == 0)
+        {
+            state = BattleState.Defeat;
+            Debug.Log("Vous avez été défait !");
+        }
+
+    }
 
     IEnumerator CommandAlly(int panelIndex) // Commande d'un tour d'un monstre ally
     {
         commandCancelled = false;
         Monster ally = playerPanels[panelIndex].monster;
         ally.isGuarding = false;
+        ally.chosenAbility = null;
 
         GameObject allyVfx = Instantiate(selectionAllyVfx, ally.transform); // VFX ally selection spawn
         playerPanels[panelIndex].transform.localScale = Vector3.one * 1.2f; // pannel scale up
@@ -157,8 +178,28 @@ public class BattleManager : MonoBehaviour
                 ordered = true;
                 continue;
             }
-            if (actionMenu.chosenAction != ActionType.Fight)
+            if (actionMenu.chosenAction == ActionType.Abilities)
+            {
+                if (ally.data.abilities.Count == 0)
+                {
+                    yield return null;
+                    continue;
+                }
+
+                if (!ally.CanPayAbility(ally.data.abilities[0]))
+                {
+                    yield return null;
+                    continue;
+                }
+
+                ally.chosenAbility = ally.data.abilities[0];
+            }
+
+            else if (actionMenu.chosenAction != ActionType.Fight)
+            {
+                yield return null;
                 continue;
+            }
 
             yield return null;
 
