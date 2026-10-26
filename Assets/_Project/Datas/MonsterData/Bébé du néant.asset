@@ -13,11 +13,16 @@ MonoBehaviour:
   m_Name: "B\xE9b\xE9 du n\xE9ant"
   m_EditorClassIdentifier: Assembly-CSharp::MonsterData
   monsterColor: {r: 0.3803922, g: 0.24705884, b: 0.62352943, a: 1}
+  monsterProfil: {fileID: 0}
   monsterName: "B\xE9b\xE9 du n\xE9ant"
   maxHp: 10
   attack: 12
   defense: 4
   maxMana: 11
   speed: 12
+  abilities:
+  - {fileID: 11400000, guid: b7bc9dd20160acb429ef7d1ff9c24f35, type: 2}
+  - {fileID: 11400000, guid: 926bd4fb17ed69648970e9ad1686b142, type: 2}
+  - {fileID: 11400000, guid: 07bab778835175b48b932fb4f3188235, type: 2}
   stopDistance: 2
   moveSpeed: 7

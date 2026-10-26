@@ -15,7 +15,7 @@ public class AbilityData : ScriptableObject
     [Header("Ability Effects")]
 
     public GameObject abilityVfx;
-    public enum AbilityEffect{ Damage, Heal};
+    public enum AbilityEffect{ Damage, Heal, ManaRecovery};
     public AbilityEffect abilityEffect;
     public enum PowerType { Flat, Percent}; // % max de la cible
     public PowerType powerType;

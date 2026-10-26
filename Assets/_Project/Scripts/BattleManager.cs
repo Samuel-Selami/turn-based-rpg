@@ -19,7 +19,9 @@ public class BattleManager : MonoBehaviour
     [SerializeField] GameObject selectionAllyVfx;
     [SerializeField] GameObject selectionSpellAllyVfx;
     [SerializeField] GameObject selectionEnnemyVfx;
+    [SerializeField] GameObject spellCastVfx;
     [SerializeField] GameObject enemyTagPrefab;
+    [SerializeField] AbilityMenu abilityMenu;
     bool commandCancelled;
 
     private void Awake()
@@ -100,6 +102,7 @@ public class BattleManager : MonoBehaviour
                     if (ally.chosenAbility != null)
                     {
                         ally.PayCostAbility(ally.chosenAbility);
+                        yield return StartCoroutine(CastSequence(ally));
                         if (ally.chosenAbility.targetMode == AbilityData.TargetMode.All)
                         {
                             List<Monster> team = ennemyTeam;
@@ -126,8 +129,37 @@ public class BattleManager : MonoBehaviour
             state = BattleState.EnnemyTurn;
             foreach (Monster ally in new List<Monster>(ennemyTeam))
             {
-                if (ally.IsAlive())
+                if (!ally.IsAlive())
+                    continue;
+
+                AbilityData ability = PickEnemyAbility(ally);
+
+                if (ability == null)
+                {
                     yield return StartCoroutine(ally.AttackSequence(PickTarget(playerTeam)));
+                    continue;
+                }
+
+                ally.PayCostAbility(ability);
+                yield return StartCoroutine(CastSequence(ally));
+
+                List<Monster> team = playerTeam;
+                if (ability.targetSide == AbilityData.TargetSide.Allies)
+                    team = ennemyTeam;
+
+                if (ability.targetSide == AbilityData.TargetSide.Self)
+                    ally.ApplyAbility(ability);
+                else if (ability.targetMode == AbilityData.TargetMode.All)
+                {
+                    foreach (Monster m in new List<Monster>(team))
+                        m.ApplyAbility(ability);
+                }
+                else
+                {
+                    Monster target = PickTarget(team);
+                    if (target != null)
+                        target.ApplyAbility(ability);
+                }
             }
         }
         // VICTORY
@@ -202,13 +234,28 @@ public class BattleManager : MonoBehaviour
                     continue;
                 }
 
-                if (!ally.CanPayAbility(ally.data.abilities[0]))
+                abilityMenu.gameObject.SetActive(true);
+                yield return null;
+                abilityMenu.Open(ally);
+
+                while (!abilityMenu.chosen && !abilityMenu.cancelled)
+                    yield return null;
+
+                abilityMenu.gameObject.SetActive(false);
+
+                if (abilityMenu.cancelled)
                 {
                     yield return null;
                     continue;
                 }
 
-                ally.chosenAbility = ally.data.abilities[0];
+                if (!ally.CanPayAbility(abilityMenu.Chosen()))
+                {
+                    yield return null;
+                    continue;
+                }
+
+                ally.chosenAbility = abilityMenu.Chosen();
             }
 
             else if (actionMenu.chosenAction != ActionType.Fight)
@@ -319,6 +366,31 @@ public class BattleManager : MonoBehaviour
         return team[index];
     }
 
+    AbilityData PickEnemyAbility(Monster enemy)
+    {
+        List<AbilityData> usable = new List<AbilityData>();
+
+        foreach (AbilityData a in enemy.data.abilities)
+        {
+            if (enemy.CanPayAbility(a))
+                usable.Add(a);
+        }
+
+        if (usable.Count == 0)
+            return null;
+
+        if (Random.Range(0, 100) < 50) // 50 %  de chance de faire une attaque normal (fight)
+            return null;
+
+        return usable[Random.Range(0, usable.Count)];
+    }
+
+    public IEnumerator CastSequence(Monster caster)
+    {
+        GameObject spellCast = Instantiate(spellCastVfx, caster.transform);
+        yield return new WaitForSeconds(1.5f);
+        Destroy(spellCast);
+    }
     public void RemoveFromBattle(Monster m)
     {
         playerTeam.Remove(m);

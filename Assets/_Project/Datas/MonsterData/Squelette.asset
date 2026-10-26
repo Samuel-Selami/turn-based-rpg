@@ -20,6 +20,8 @@ MonoBehaviour:
   defense: 9
   maxMana: 6
   speed: 4
-  abilities: []
+  abilities:
+  - {fileID: 11400000, guid: b7bc9dd20160acb429ef7d1ff9c24f35, type: 2}
+  - {fileID: 11400000, guid: b1a00aac61d9aea419db6e1480e6f3fa, type: 2}
   stopDistance: 2
   moveSpeed: 7

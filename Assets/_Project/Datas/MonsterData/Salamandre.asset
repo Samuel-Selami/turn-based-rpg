@@ -13,11 +13,15 @@ MonoBehaviour:
   m_Name: Salamandre
   m_EditorClassIdentifier: Assembly-CSharp::MonsterData
   monsterColor: {r: 0.75294125, g: 0.31764707, b: 0.23529413, a: 1}
+  monsterProfil: {fileID: 0}
   monsterName: Salamandre
   maxHp: 20
   attack: 14
   defense: 8
   maxMana: 3
   speed: 7
+  abilities:
+  - {fileID: 11400000, guid: b7bc9dd20160acb429ef7d1ff9c24f35, type: 2}
+  - {fileID: 11400000, guid: 8e7da280807106d49b02f8c15061d0a8, type: 2}
   stopDistance: 2
   moveSpeed: 7

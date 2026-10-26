@@ -19,11 +19,11 @@ MonoBehaviour:
   abilityVfx: {fileID: 0}
   abilityEffect: 0
   powerType: 0
-  power: 10
+  power: 6
   duration: 1
   abilityCostResource: 0
   abilityCostType: 0
-  abilityCost: 6
+  abilityCost: 5
   accuracy: 80
   targetSide: 0
   targetMode: 1
