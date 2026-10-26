@@ -16,7 +16,7 @@ MonoBehaviour:
   monsterProfil: {fileID: 21300000, guid: 3cac1be44b19bca4a8087a0dfd878737, type: 3}
   monsterName: Champignon souriant
   maxHp: 12
-  attack: 5
+  attack: 6
   defense: 6
   maxMana: 12
   speed: 9

@@ -17,6 +17,7 @@ public class BattleManager : MonoBehaviour
     [SerializeField] ActionMenu actionMenu;
 
     [SerializeField] GameObject selectionAllyVfx;
+    [SerializeField] GameObject selectionSpellAllyVfx;
     [SerializeField] GameObject selectionEnnemyVfx;
     [SerializeField] GameObject enemyTagPrefab;
     bool commandCancelled;
@@ -70,7 +71,7 @@ public class BattleManager : MonoBehaviour
                 }
 
                 // si il a annulé -1
-                int j = 1 - 1;
+                int j = i - 1;
                 while (j >= 0 && !playerPanels[j].monster.IsAlive())
                     j--;
 
@@ -99,7 +100,17 @@ public class BattleManager : MonoBehaviour
                     if (ally.chosenAbility != null)
                     {
                         ally.PayCostAbility(ally.chosenAbility);
-                        ally.chosenTarget.ApplyAbility(ally.chosenAbility);
+                        if (ally.chosenAbility.targetMode == AbilityData.TargetMode.All)
+                        {
+                            List<Monster> team = ennemyTeam;
+                            if (ally.chosenAbility.targetSide == AbilityData.TargetSide.Allies)
+                                team = playerTeam;
+
+                            foreach (Monster m in new List<Monster>(team))
+                                m.ApplyAbility(ally.chosenAbility);
+                        }
+                        else
+                            ally.chosenTarget.ApplyAbility(ally.chosenAbility);
                         ally.chosenAbility = null;
                     }
                     else
@@ -142,7 +153,11 @@ public class BattleManager : MonoBehaviour
         ally.chosenAbility = null;
 
         GameObject allyVfx = Instantiate(selectionAllyVfx, ally.transform); // VFX ally selection spawn
+        //Panel
         playerPanels[panelIndex].transform.localScale = Vector3.one * 1.2f; // pannel scale up
+        yield return
+        StartCoroutine(playerPanels[panelIndex].SlideMonsterPanelSelection(true)); //anim slide selection
+
         int index = 0;
         GameObject ennemyVfx = null;
 
@@ -153,6 +168,7 @@ public class BattleManager : MonoBehaviour
         {
             bool confirmed = false;
             bool cancelled = false;
+            ally.chosenAbility = null;
 
             actionMenu.actionChosen = false;
             actionMenu.gameObject.SetActive(true);
@@ -201,9 +217,59 @@ public class BattleManager : MonoBehaviour
                 continue;
             }
 
-            yield return null;
+            List<Monster> targetTeam = ennemyTeam;
+            GameObject selectionMonsterPrefab = selectionEnnemyVfx;
 
-            ennemyVfx = Instantiate(selectionEnnemyVfx, ennemyTeam[index].transform);// VFX enenmy selection first spawn
+            if (ally.chosenAbility != null)
+            {
+                if (ally.chosenAbility.targetSide == AbilityData.TargetSide.Allies)
+                {
+                    targetTeam = playerTeam;
+                    selectionMonsterPrefab = selectionSpellAllyVfx;
+                }
+
+                if (ally.chosenAbility.targetSide == AbilityData.TargetSide.Self)
+                {
+                    ally.chosenTarget = ally;
+                    ordered = true;
+                    continue;
+                }
+            }
+
+            if (index >= targetTeam.Count)
+                index = 0;
+
+            if (ally.chosenAbility != null && ally.chosenAbility.targetMode == AbilityData.TargetMode.All)
+            {
+                yield return null;
+
+                List<GameObject> cursors = new List<GameObject>();
+                foreach (Monster m in targetTeam)
+                    cursors.Add(Instantiate(selectionMonsterPrefab, m.transform));
+
+                bool allConfirmed = false;
+                bool allCancelled = false;
+
+                while (!allConfirmed && !allCancelled)
+                {
+                    if (BattleInput.Confirm()) allConfirmed = true;
+                    if (BattleInput.Cancel()) allCancelled = true;
+                    yield return null;
+                }
+
+                foreach (GameObject c in cursors)
+                    Destroy(c);
+
+                if (allCancelled)
+                    continue;
+
+                ally.chosenTarget = ally;
+                ordered = true;
+                continue;
+            }
+
+            yield return null;
+            ennemyVfx = Instantiate(selectionMonsterPrefab, targetTeam[index].transform);// VFX enenmy selection first spawn
 
             while (!confirmed && !cancelled)
             {
@@ -215,25 +281,29 @@ public class BattleManager : MonoBehaviour
                 int direction = BattleInput.Horizontal();
                 if (direction != 0) //select moove ennemy
                 {
-                    index = (index + direction + ennemyTeam.Count) % ennemyTeam.Count;
+                    index = (index + direction + targetTeam.Count) % targetTeam.Count;
                     Destroy(ennemyVfx);
-                    ennemyVfx = Instantiate(selectionEnnemyVfx, ennemyTeam[index].transform);// VFX enenmy selection spawn
+                    ennemyVfx = Instantiate(selectionMonsterPrefab, targetTeam[index].transform);// VFX enenmy selection spawn
                 }
                 yield return null;
             }
 
             if (confirmed)
             {
-                ally.chosenTarget = ennemyTeam[index];
+                ally.chosenTarget = targetTeam[index];
                 ordered = true;
             }
 
             Destroy(ennemyVfx);
         }
-
+        // Panel
         playerPanels[panelIndex].transform.localScale = Vector3.one; //pannel normal scale
+        yield return
+        StartCoroutine(playerPanels[panelIndex].SlideMonsterPanelSelection(false));
+
         Destroy(allyVfx);
     }
+
 
 
     void Update()

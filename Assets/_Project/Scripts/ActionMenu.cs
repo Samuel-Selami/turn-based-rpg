@@ -4,35 +4,50 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 public enum ActionType { Fight, Abilities, Guard, Objects, Pact };
+
+[System.Serializable]
+public class MenuEntry
+{
+    public RectTransform button;
+    public GameObject highlight;
+    public int up, down, left, right;
+}
+
 public class ActionMenu : MonoBehaviour
 {
     public bool actionChosen = false;
-    [SerializeField] List<RectTransform> actionButtons;
+    [SerializeField] List<MenuEntry> entries;
     [SerializeField] RectTransform selectionArrow;
-    [SerializeField] Vector2 arrowOffset;
     int index = 0;
 
     public ActionType chosenAction;
 
-    void Highlight (int i)
+    void Highlight(int i)
     {
-        for (int j = 0; j < actionButtons.Count; j++)
+        for (int j = 0; j < entries.Count; j++)
         {
-            actionButtons[j].transform.localScale = Vector3.one;
+            entries[j].button.localScale = Vector3.one;
+            entries[j].highlight.SetActive(false);
         }
-        actionButtons[i].transform.localScale = Vector3.one * 1.1f;
+
+        entries[i].button.localScale = Vector3.one * 1.05f; //scale up
+        entries[i].highlight.SetActive(true);
     }
+
     private void Update()
     {
-        int direction = BattleInput.Vertical();
+        int v = BattleInput.Vertical();
+        int h = BattleInput.Horizontal();
 
-            if (direction != 0)
-            {
-                index = (index + direction + actionButtons.Count) % actionButtons.Count;
-                selectionArrow.SetParent(actionButtons[index], false);
-                selectionArrow.anchoredPosition = arrowOffset;
+        if (v != 0 || h != 0)
+        {
+            if (v > 0) index = entries[index].down;
+            else if (v < 0) index = entries[index].up;
+            else if (h > 0) index = entries[index].right;
+            else index = entries[index].left;
+
             Highlight(index);
-            }
+        }
 
         if (BattleInput.Confirm())
         {

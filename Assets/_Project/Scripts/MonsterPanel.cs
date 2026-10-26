@@ -1,3 +1,4 @@
+using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -24,8 +25,16 @@ public class MonsterPanel : MonoBehaviour
     [Header("Damage Mana Bar")]
     [SerializeField] UnityEngine.UI.Image manaDamageBar;
     [SerializeField] float manaDamageSpeed;
+    [Header("Panel Selection")]
+    [SerializeField] RectTransform monsterPanelSelection;
+    [SerializeField] float slideDistance;
+    [SerializeField] float slideSpeed;
+    Vector2 monsterPanelSelectionStart;
 
-
+    private void Awake()
+    {
+        monsterPanelSelectionStart = monsterPanelSelection.anchoredPosition;
+    }
     void Start()
     {
         monsterProfil.sprite = monster.data.monsterProfil;
@@ -49,5 +58,17 @@ public class MonsterPanel : MonoBehaviour
         manaDamageBar.fillAmount = Mathf.MoveTowards(manaDamageBar.fillAmount, manaratio, manaDamageSpeed * Time.deltaTime);
 
         mana.text = monster.currentMana.ToString();
+    }
+
+    public IEnumerator SlideMonsterPanelSelection(bool show) // panel selection slide
+    {
+        Vector2 target = monsterPanelSelectionStart;
+        if (show)
+            target = monsterPanelSelectionStart + new Vector2(-slideDistance, 0f);
+        while (monsterPanelSelection.anchoredPosition != target)
+        {
+            monsterPanelSelection.anchoredPosition = Vector2.MoveTowards(monsterPanelSelection.anchoredPosition, target, slideSpeed * Time.deltaTime);
+            yield return null;
+        }
     }
 }
