@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using Unity.VisualScripting;
 using UnityEngine;
 using static UnityEngine.GraphicsBuffer;
@@ -21,7 +22,10 @@ public class BattleManager : MonoBehaviour
     [SerializeField] GameObject selectionEnnemyVfx;
     [SerializeField] GameObject spellCastVfx;
     [SerializeField] GameObject enemyTagPrefab;
+    [SerializeField] GameObject damagePopupPrefab;
     [SerializeField] AbilityMenu abilityMenu;
+    [SerializeField] float popupHeight = 3f;
+    [SerializeField, Range(0f, 1f)] float impactPoint = 0.5f;
     bool commandCancelled;
 
     private void Awake()
@@ -103,17 +107,25 @@ public class BattleManager : MonoBehaviour
                     {
                         ally.PayCostAbility(ally.chosenAbility);
                         yield return StartCoroutine(CastSequence(ally));
+
+                        List<Monster> targets = new List<Monster>();
+
                         if (ally.chosenAbility.targetMode == AbilityData.TargetMode.All)
                         {
                             List<Monster> team = ennemyTeam;
                             if (ally.chosenAbility.targetSide == AbilityData.TargetSide.Allies)
                                 team = playerTeam;
 
-                            foreach (Monster m in new List<Monster>(team))
-                                m.ApplyAbility(ally.chosenAbility);
+
+                            targets = new List<Monster>(team);
                         }
                         else
-                            ally.chosenTarget.ApplyAbility(ally.chosenAbility);
+                        {
+                            targets.Add(ally.chosenTarget);
+                        }
+
+                        yield return StartCoroutine(AbilityVfxSequence(ally.chosenAbility, targets));
+
                         ally.chosenAbility = null;
                     }
                     else
@@ -144,22 +156,23 @@ public class BattleManager : MonoBehaviour
                 yield return StartCoroutine(CastSequence(ally));
 
                 List<Monster> team = playerTeam;
+                List<Monster> targets = new List<Monster>();
+
                 if (ability.targetSide == AbilityData.TargetSide.Allies)
                     team = ennemyTeam;
 
                 if (ability.targetSide == AbilityData.TargetSide.Self)
-                    ally.ApplyAbility(ability);
+                    targets.Add(ally);
                 else if (ability.targetMode == AbilityData.TargetMode.All)
-                {
-                    foreach (Monster m in new List<Monster>(team))
-                        m.ApplyAbility(ability);
-                }
+                    targets = new List<Monster>(team);
                 else
                 {
                     Monster target = PickTarget(team);
                     if (target != null)
-                        target.ApplyAbility(ability);
+                        targets.Add(target);
                 }
+
+                yield return StartCoroutine(AbilityVfxSequence(ability, targets));
             }
         }
         // VICTORY
@@ -185,7 +198,7 @@ public class BattleManager : MonoBehaviour
         ally.chosenAbility = null;
 
         GameObject allyVfx = Instantiate(selectionAllyVfx, ally.transform); // VFX ally selection spawn
-        //Panel
+                                                                            //Panel
         playerPanels[panelIndex].transform.localScale = Vector3.one * 1.2f; // pannel scale up
         yield return
         StartCoroutine(playerPanels[panelIndex].SlideMonsterPanelSelection(true)); //anim slide selection
@@ -390,6 +403,46 @@ public class BattleManager : MonoBehaviour
         GameObject spellCast = Instantiate(spellCastVfx, caster.transform);
         yield return new WaitForSeconds(1.5f);
         Destroy(spellCast);
+    }
+
+    void ApplyToAll(AbilityData ability, List<Monster> targets)
+    {
+        foreach (Monster m in targets)
+            m.ApplyAbility(ability);
+    }
+
+    public IEnumerator AbilityVfxSequence(AbilityData ability, List<Monster> targets)
+    {
+        List<GameObject> vfxList = new List<GameObject>();
+
+        if (targets.Count == 0 || ability.abilityVfx == null)
+        {
+            ApplyToAll(ability, targets);
+            yield break;
+        }
+
+        foreach (Monster m in targets)
+        {
+            GameObject vfx = Instantiate(ability.abilityVfx, m.transform);
+            vfxList.Add(vfx);
+        }
+
+        ParticleSystem ps = vfxList[0].GetComponentInChildren<ParticleSystem>();
+        float duration = ps.main.duration;
+
+        yield return new WaitForSeconds(duration * impactPoint);
+        ApplyToAll(ability, targets);
+        yield return new WaitForSeconds(duration * (1f - impactPoint));
+
+
+        foreach (GameObject g in vfxList)
+            Destroy(g);
+    }
+
+    public void ShowDamagePopup(Monster target, int amount, bool isHeal)
+    {
+        GameObject damagepopup = Instantiate(damagePopupPrefab, target.transform.position + Vector3.up * popupHeight, Quaternion.identity);
+        damagepopup.GetComponent<DamagePopup>().Show(amount, isHeal);
     }
     public void RemoveFromBattle(Monster m)
     {

@@ -47,21 +47,39 @@ public class AbilityData : ScriptableObject
         accuracyindice = accuracyindice + "%";
 
         // Power
-        if (targetSide == TargetSide.Allies || targetSide == TargetSide.Self)
-            value = "<color=#5EF461>" + value + "</color>"; //couleur vert heal
+        if (abilityEffect == AbilityEffect.Heal)
+        {
+            value = value + " PV";
+            value = "<color=#23AD33>" + value + "</color>"; //couleur vert heal
+        }
+        if (abilityEffect == AbilityEffect.ManaRecovery)
+        {
+            value = value + " PM";
+            value = "<color=#2368AD>" + value + "</color>"; //couleur bleu mana
+        }
         else
-            value = "<color=#FFD86B>" + value + "</color>"; //couleur doré
+            value = "<color=#C71414>" + value + "</color>"; //couleur rouge
 
         value = "<b>" + value + "</b>"; // gras
         value = "<size=120%>" + value + "</size>"; // plus grand
 
         //Cost
-        cost = "<color=#18E4F4>" + cost + "</color>"; //couleur bleu mana
+        if (abilityCostResource == AbilityCostResource.Mana)
+        {
+            cost = cost + " PM";
+            cost = "<color=#2368AD>" + cost + "</color>"; //couleur bleu mana
+        }
+        else
+        {
+            cost = cost + " PV";
+            cost = "<color=#C71414>" + cost + "</color>"; //couleur rouge (ressource hp)
+        }
+
         cost = "<b>" + cost + "</b>";
         cost = "<size=120%>" + cost + "</size>";
 
         //Accuracy
-        accuracyindice = "<color=#FFD86B>" + accuracyindice + "</color>"; //couleur doré
+        accuracyindice = "<color=#C78E14>" + accuracyindice + "</color>"; //couleur doré
         accuracyindice = "<b>" + accuracyindice + "</b>";
         accuracyindice = "<size=120%>" + accuracyindice + "</size>";
 

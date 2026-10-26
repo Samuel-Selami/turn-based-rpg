@@ -10,20 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0d7d00df0ce45d34eaf8c1ef0c385935, type: 3}
-  m_Name: Ability_Ecrasement
+  m_Name: "Ability_M\xE9ditation"
   m_EditorClassIdentifier: Assembly-CSharp::AbilityData
   abilityIcon: {fileID: 0}
-  abilityName: Ecrasement
-  abilityType: 0
-  abilityDescription: "Ex\xE9cute une rotation fr\xE9n\xE9tique de lames d'acier. Touche l'ensemble des cibles sur le terrain et inflige {power} d\xE9g\xE2ts. "
+  abilityName: "M\xE9ditation"
+  abilityType: 1
+  abilityDescription: "Canalise son \xE9nergie pour r\xE9cup\xE9rer {power}. Ne co\xFBte aucun PM."
   abilityVfx: {fileID: 0}
-  abilityEffect: 0
+  abilityEffect: 2
   powerType: 0
-  power: 6
+  power: 5
   duration: 1
-  abilityCostResource: 1
+  abilityCostResource: 0
   abilityCostType: 0
-  abilityCost: 6
-  accuracy: 50
-  targetSide: 0
+  abilityCost: 0
+  accuracy: 100
+  targetSide: 2
   targetMode: 0

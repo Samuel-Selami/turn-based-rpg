@@ -51,6 +51,7 @@ public class Monster : MonoBehaviour
     void TakeDamage(int amount) // calcul de damage reçu
     {
         currentHp = Mathf.Max(0, (currentHp - amount));
+        manager.ShowDamagePopup(this, amount, false);
 
         if (currentHp == 0)
         {
@@ -64,7 +65,8 @@ public class Monster : MonoBehaviour
 
     void Heal(int amount) // calcul de heal reçu
     {
-            currentHp = Mathf.Min((currentHp + amount), data.maxHp);
+        currentHp = Mathf.Min((currentHp + amount), data.maxHp);
+        manager.ShowDamagePopup(this, amount, true);
     }
 
     void ManaRecovery(int amount) // calcul de mana reçu
@@ -78,11 +80,16 @@ public class Monster : MonoBehaviour
         int amount = ability.power;
 
         if (ability.powerType == AbilityData.PowerType.Percent)
-            amount = (data.maxHp * amount) / 100;
+        {
+            if (ability.abilityEffect == AbilityData.AbilityEffect.ManaRecovery)
+                amount = (data.maxMana * amount) / 100;
+            else
+                amount = (data.maxHp * amount) / 100;
+        }
 
         if (ability.abilityEffect == AbilityData.AbilityEffect.Damage) // Damage
             TakeDamage(amount);
-        if (ability.abilityEffect == AbilityData.AbilityEffect.Heal) // Heal
+        else if (ability.abilityEffect == AbilityData.AbilityEffect.Heal) // Heal
             Heal(amount);
         else // ManaRecovery
             ManaRecovery(amount);
