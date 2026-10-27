@@ -16,7 +16,7 @@ MonoBehaviour:
   abilityName: Coup de folie
   abilityType: 0
   abilityDescription: "Sacrifie {cost} pour tenter un coup brutal infligeant {power} d\xE9g\xE2ts \xE0 un ennemi. {accuracy} de chance de succ\xE8s."
-  abilityVfx: {fileID: 0}
+  abilityVfx: {fileID: 8538705203729703940, guid: a93f4d3c7002047409651bc54cdb4480, type: 3}
   abilityEffect: 0
   powerType: 0
   power: 10
