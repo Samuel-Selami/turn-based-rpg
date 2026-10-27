@@ -3482,9 +3482,12 @@ MonoBehaviour:
   selectionSpellAllyVfx: {fileID: 7255440658594885956, guid: a917e75e01ec3464fa6cf08ab64ba4d2, type: 3}
   selectionEnnemyVfx: {fileID: 7255440658594885956, guid: ed2f360396ab7bc499511d5b999bb3dd, type: 3}
   spellCastVfx: {fileID: 3572506496382040518, guid: c671b4e1f266741488f99ecd3da36601, type: 3}
+  guardVfx: {fileID: 456341557050799096, guid: a77ada9638d61f24d97af99886555fc8, type: 3}
   enemyTagPrefab: {fileID: 8199260137891765058, guid: 18d83647caa024a43892b64b57aa609b, type: 3}
   damagePopupPrefab: {fileID: 1017083656343124477, guid: 1e7718e94a6cb8446aceda54cff16240, type: 3}
   abilityMenu: {fileID: 145965044}
+  popupHeight: 3
+  impactPoint: 0.5
 --- !u!1 &365993998
 GameObject:
   m_ObjectHideFlags: 0
@@ -9783,6 +9786,7 @@ MonoBehaviour:
   chosenTarget: {fileID: 0}
   chosenAbility: {fileID: 0}
   isGuarding: 0
+  chosenGuard: 0
 --- !u!4 &1351566804 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3573763118513115163, guid: b58b981c7ac34c3eaaf57a11c09d5da2, type: 3}
@@ -11275,6 +11279,7 @@ MonoBehaviour:
   chosenTarget: {fileID: 0}
   chosenAbility: {fileID: 0}
   isGuarding: 0
+  chosenGuard: 0
 --- !u!4 &1563747064 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3029897042515285248, guid: 7110a21afadc482595f133443a3bcaf0, type: 3}
@@ -11993,6 +11998,7 @@ MonoBehaviour:
   chosenTarget: {fileID: 0}
   chosenAbility: {fileID: 0}
   isGuarding: 0
+  chosenGuard: 0
 --- !u!4 &1658478584 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1221083948262841476, guid: 5654013da7fb419f956120232c54cee1, type: 3}
@@ -12164,6 +12170,7 @@ MonoBehaviour:
   chosenTarget: {fileID: 0}
   chosenAbility: {fileID: 0}
   isGuarding: 0
+  chosenGuard: 0
 --- !u!4 &1675003040 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6285209290496798482, guid: a604ffbac01747d6b33aff45d9e3dd8a, type: 3}
@@ -14679,6 +14686,7 @@ MonoBehaviour:
   chosenTarget: {fileID: 0}
   chosenAbility: {fileID: 0}
   isGuarding: 0
+  chosenGuard: 0
 --- !u!4 &2070600664 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4191744185429214, guid: 7f22c0b4e4c94410932f144351dc151d, type: 3}
@@ -14891,6 +14899,7 @@ MonoBehaviour:
   chosenTarget: {fileID: 0}
   chosenAbility: {fileID: 0}
   isGuarding: 0
+  chosenGuard: 0
 --- !u!4 &2091482536 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6112321247830043478, guid: 6663a7095dcf4292a33c7d4a948f0cc6, type: 3}
@@ -15464,63 +15473,6 @@ Terrain:
   m_EnableTreesAndDetailsRayTracing: 0
   m_EnableHeightmapLODFrustumCulling: 1
   m_TreeMotionVectorModeOverride: 3
---- !u!1001 &7093465513409679340
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 3421325188109450445, guid: fb77db4986186764da598f1601f71dc5, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3421325188109450445, guid: fb77db4986186764da598f1601f71dc5, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3421325188109450445, guid: fb77db4986186764da598f1601f71dc5, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3421325188109450445, guid: fb77db4986186764da598f1601f71dc5, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3421325188109450445, guid: fb77db4986186764da598f1601f71dc5, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3421325188109450445, guid: fb77db4986186764da598f1601f71dc5, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3421325188109450445, guid: fb77db4986186764da598f1601f71dc5, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3421325188109450445, guid: fb77db4986186764da598f1601f71dc5, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3421325188109450445, guid: fb77db4986186764da598f1601f71dc5, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3421325188109450445, guid: fb77db4986186764da598f1601f71dc5, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5810738202403380136, guid: fb77db4986186764da598f1601f71dc5, type: 3}
-      propertyPath: m_Name
-      value: VFX_PremierSoin
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: fb77db4986186764da598f1601f71dc5, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -15532,4 +15484,3 @@ SceneRoots:
   - {fileID: 412025477}
   - {fileID: 1215445541}
   - {fileID: 2080324988}
-  - {fileID: 7093465513409679340}

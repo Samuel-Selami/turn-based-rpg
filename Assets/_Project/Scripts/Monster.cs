@@ -23,6 +23,9 @@ public class Monster : MonoBehaviour
     public Monster chosenTarget;
     public AbilityData chosenAbility;
     public bool isGuarding = false;
+    GameObject guardVfxInstance;
+    public bool chosenGuard = false;
+
 
     private void Awake()
     {
@@ -37,6 +40,22 @@ public class Monster : MonoBehaviour
     void Start()
     {
         if (data == null) return;
+    }
+
+    public void StartGuard()
+    {
+        isGuarding = true;
+        guardVfxInstance = Instantiate(manager.guardVfx, transform);
+    }
+
+    public void StopGuard()
+    {
+        isGuarding = false;
+        if (guardVfxInstance != null)
+        {
+            Destroy(guardVfxInstance);
+            guardVfxInstance = null;
+        }
     }
 
     int ComputeDamage(int attackerAttack) // calcul de damage

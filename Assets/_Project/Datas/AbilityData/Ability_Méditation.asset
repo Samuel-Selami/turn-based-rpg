@@ -16,7 +16,7 @@ MonoBehaviour:
   abilityName: "M\xE9ditation"
   abilityType: 1
   abilityDescription: "Canalise son \xE9nergie pour r\xE9cup\xE9rer {power}. Ne co\xFBte aucun PM."
-  abilityVfx: {fileID: 0}
+  abilityVfx: {fileID: 2859342757034713794, guid: 340404429d2071d4d94cb966e5ef7047, type: 3}
   abilityEffect: 2
   powerType: 0
   power: 5

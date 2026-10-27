@@ -16,7 +16,7 @@ MonoBehaviour:
   abilityName: Danse des Lames
   abilityType: 0
   abilityDescription: "Ex\xE9cute une rotation fr\xE9n\xE9tique de lames d'acier. Touche l'ensemble des cibles sur le terrain et inflige {power} d\xE9g\xE2ts. "
-  abilityVfx: {fileID: 0}
+  abilityVfx: {fileID: 5183147366960789900, guid: 81934e092246c884ba3bec2d543f4bb5, type: 3}
   abilityEffect: 0
   powerType: 0
   power: 6

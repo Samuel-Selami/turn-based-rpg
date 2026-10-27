@@ -21,6 +21,7 @@ public class BattleManager : MonoBehaviour
     [SerializeField] GameObject selectionSpellAllyVfx;
     [SerializeField] GameObject selectionEnnemyVfx;
     [SerializeField] GameObject spellCastVfx;
+    [SerializeField] public GameObject guardVfx;
     [SerializeField] GameObject enemyTagPrefab;
     [SerializeField] GameObject damagePopupPrefab;
     [SerializeField] AbilityMenu abilityMenu;
@@ -55,6 +56,9 @@ public class BattleManager : MonoBehaviour
         {
             // PLAYER
             state = BattleState.PlayerTurn;
+
+            foreach (Monster ally in playerTeam)
+                ally.StopGuard();
 
             //demande
             int i = 0;
@@ -92,6 +96,14 @@ public class BattleManager : MonoBehaviour
             for (int a = 0; a < playerPanels.Count; a++)
             {
                 Monster ally = playerPanels[a].monster;
+
+                if (ally.IsAlive() && ally.chosenGuard)
+                {
+                    ally.StartGuard();
+                    ally.chosenGuard = false;
+                    continue;
+
+                }
 
                 if (ally.IsAlive() && ally.chosenTarget != null && !ally.chosenTarget.IsAlive())
                 {
@@ -194,7 +206,7 @@ public class BattleManager : MonoBehaviour
     {
         commandCancelled = false;
         Monster ally = playerPanels[panelIndex].monster;
-        ally.isGuarding = false;
+        ally.chosenGuard = false;
         ally.chosenAbility = null;
 
         GameObject allyVfx = Instantiate(selectionAllyVfx, ally.transform); // VFX ally selection spawn
@@ -235,7 +247,7 @@ public class BattleManager : MonoBehaviour
             }
             if (actionMenu.chosenAction == ActionType.Guard) //Guard
             {
-                ally.isGuarding = true;
+                ally.chosenGuard = true;
                 ordered = true;
                 continue;
             }
