@@ -3,8 +3,6 @@
 A personal turn-based RPG project developed in **Unity**, inspired by *Dragon Quest Monster: Joker*.
 
 This project is a personal RPG project combining strategic 3v3 monster battles, abilities, and a monster fusion system within an original fantasy universe built around the concept of pacts.
-Developed as part of my journey into Game Programming, the project focuses on gameplay systems, combat mechanics, UI programming, and interactive combat presentation.
-
 
 ## Features
 
