@@ -1,0 +1,71 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: M_Game_ArtStyle
+  m_Shader: {fileID: -6465566751694194690, guid: 5d60bc99d5dc7cd41a655953bd1617ad, type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _PrintTexture:
+        m_Texture: {fileID: 2800000, guid: e32fd291137e898489b42b881f752544, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _VignetteTexture:
+        m_Texture: {fileID: 2800000, guid: e32fd291137e898489b42b881f752544, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_Lightmaps:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_LightmapsInd:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_ShadowMasks:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _ColorSteps: 15
+    - _EffectPower: 0.2
+    - _Float: 0.71
+    - _HighlightTintPower: 12
+    - _Maximum: 0.001
+    - _ShadowTintPower: 1.83
+    - _TexturePower: 0.2
+    - _TextureTiling: 1.3
+    - _TintEnd: 0.33
+    - _TintPower: 0.25
+    - _TintStart: 0.03
+    - _VignetteDarkness: -7.35
+    - _VignetteEnd: 0.68
+    - _VignetteIntensity: 0.5
+    - _VignetteStart: 0.4
+    - _VignetteTexturePower: 0.25
+    - _VignetteTiling: 2
+    m_Colors:
+    - _Color: {r: 1, g: 0, b: 0, a: 1}
+    - _HighlightTint: {r: 1, g: 0.6289872, b: 0.20392156, a: 1}
+    - _ShadowTint: {r: 0.6889373, g: 1.0471311, b: 1.3909973, a: 1}
+    - _VignetteColor: {r: 0, g: 0, b: 0, a: 1}
+  m_BuildTextureStacks: []
+  m_AllowLocking: 1

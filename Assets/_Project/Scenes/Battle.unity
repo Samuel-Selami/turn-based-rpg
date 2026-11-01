@@ -3172,8 +3172,8 @@ Light:
   m_Enabled: 1
   serializedVersion: 13
   m_Type: 1
-  m_Color: {r: 1, g: 0.8749155, b: 0.7688679, a: 1}
-  m_Intensity: 1.19
+  m_Color: {r: 0.9716981, g: 0.75627446, b: 0.75627446, a: 1}
+  m_Intensity: 1.81
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -13092,7 +13092,7 @@ MonoBehaviour:
   m_RequiresOpaqueTextureOption: 2
   m_CameraType: 0
   m_Cameras: []
-  m_RendererIndex: -1
+  m_RendererIndex: 1
   m_VolumeLayerMask:
     serializedVersion: 2
     m_Bits: 64
@@ -15431,7 +15431,7 @@ TerrainCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_TerrainData: {fileID: 15600000, guid: 07b4b3be8a496394ba4188525bab9887, type: 2}
-  m_EnableTreeColliders: 1
+  m_EnableTreeColliders: 0
 --- !u!218 &2146961576
 Terrain:
   m_ObjectHideFlags: 0
