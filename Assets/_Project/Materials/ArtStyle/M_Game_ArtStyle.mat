@@ -48,8 +48,17 @@ Material:
     - _ColorSteps: 15
     - _EffectPower: 0.2
     - _Float: 0.71
-    - _HighlightTintPower: 12
+    - _HighlightTintPower: 20.5
     - _Maximum: 0.001
+    - _PaintContrast: 1.5
+    - _PaintDarken: 0.38
+    - _PaintEdgeScale: 8.4
+    - _PaintEdgeSpeed: 0.01
+    - _PaintEdgeStrength: 0.199
+    - _PaintIntensity: 1
+    - _PaintLighten: 1.9
+    - _PaintScale: -7.6
+    - _PaintSpeed: 0.15
     - _ShadowTintPower: 1.83
     - _TexturePower: 0.2
     - _TextureTiling: 1.3
