@@ -11416,6 +11416,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Bld_Windmill_01
       objectReference: {fileID: 0}
+    - target: {fileID: 8350444319614016920, guid: f0290686e4170fc4b8421f6a07049fad, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8694599788772312866, guid: f0290686e4170fc4b8421f6a07049fad, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.6983001
