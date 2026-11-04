@@ -1,0 +1,106 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &1
+MonoBehaviour:
+  m_ObjectHideFlags: 53
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf751c0e60f36a563d1f74fff9f58588, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Andreleandrodev.MiPrefabsPainter.Editor::MiPrefabsPainter.Configuration.PrefabPainterSettings
+  palettes:
+  - name: Default
+    entries: []
+    placement:
+      enabled: 0
+      foliageDensity: 2
+      yawMode: 1
+      yawOffset: 0
+      randomizeScale: 0
+      uniformScale: 1
+      minScale: {x: 0.9, y: 0.9, z: 0.9}
+      maxScale: {x: 1.1, y: 1.1, z: 1.1}
+  - name: Tree
+    entries:
+    - prefab: {fileID: 2146921750331591826, guid: a6dccea81e1455d4491d73f1d0e6d0ce, type: 3}
+      weight: 1
+      selected: 0
+    - prefab: {fileID: 1016392496237815170, guid: f8b47c2401a09be4f87efe27b925b3fd, type: 3}
+      weight: 1
+      selected: 0
+    - prefab: {fileID: 5592075822852266847, guid: 44bbd64fad9366947a1c9b68c15e1261, type: 3}
+      weight: 1
+      selected: 0
+    - prefab: {fileID: 3298165907711742831, guid: 050fd5c9e63617c4db35ee70e9e823f1, type: 3}
+      weight: 1
+      selected: 0
+    - prefab: {fileID: 2452613710419899469, guid: f5ba9e2973c6d8d4cad295b79e2a7f45, type: 3}
+      weight: 1
+      selected: 1
+    - prefab: {fileID: 2154830210199987570, guid: 681cbb809427f574a9f0d40322b45c90, type: 3}
+      weight: 1
+      selected: 0
+    - prefab: {fileID: 739240639354438539, guid: ab41e12e3193e5241a054da74ad6cee7, type: 3}
+      weight: 1
+      selected: 0
+    - prefab: {fileID: 6954770494557141849, guid: 0f2120e89197acc47bfde23175d19f26, type: 3}
+      weight: 1
+      selected: 0
+    placement:
+      enabled: 0
+      foliageDensity: 2
+      yawMode: 1
+      yawOffset: 0
+      randomizeScale: 0
+      uniformScale: 1
+      minScale: {x: 1, y: 1, z: 1}
+      maxScale: {x: 1, y: 1, z: 1}
+  activePaletteIndex: 1
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  minDistance: 0.85
+  minSlope: 0
+  maxSlope: 180
+  useMeshFallback: 1
+  alignToNormal: 0
+  normalBlend: 1
+  surfaceOffset: 0
+  yawMode: 1
+  yawOffset: 0
+  maxTilt: 0
+  sitOnSurface: 0
+  randomizeScale: 0
+  uniformScale: 1
+  minScale: {x: 1, y: 1, z: 1}
+  maxScale: {x: 1, y: 1, z: 1}
+  showGhost: 1
+  maxGhosts: 160
+  ghostDetail: 0
+  realisticArea: 0
+  spawnOnlyInMeshes: 1
+  forceFullDensity: 0
+  notificationSeconds: 3
+  brushRadius: 16.1
+  brushDensity: 29
+  pickOrder: 1
+  foliageFill: 0
+  foliageDensity: 2
+  foliageEraseDensity: 0
+  foliageAutoSpacing: 1
+  foliageJitter: 0.75
+  gridAlignment: 0
+  foliageLatticeErase: 0
+  scopeRoot:
+    globalObjectId: 
+  maxInstancesPerStroke: 500
+  continuousStroke: 1
+  strokeSpacing: 1
+  eraseOnlyPalettePrefabs: 1
+  useStrokeSeed: 0
+  strokeSeed: 20260728
+  userPresets: []
