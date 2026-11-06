@@ -40,7 +40,7 @@ MonoBehaviour:
       selected: 0
     - prefab: {fileID: 2452613710419899469, guid: f5ba9e2973c6d8d4cad295b79e2a7f45, type: 3}
       weight: 1
-      selected: 1
+      selected: 0
     - prefab: {fileID: 2154830210199987570, guid: 681cbb809427f574a9f0d40322b45c90, type: 3}
       weight: 1
       selected: 0
@@ -48,6 +48,18 @@ MonoBehaviour:
       weight: 1
       selected: 0
     - prefab: {fileID: 6954770494557141849, guid: 0f2120e89197acc47bfde23175d19f26, type: 3}
+      weight: 1
+      selected: 0
+    - prefab: {fileID: 1583811397360488284, guid: ad4266017d60f904c9024d082d378839, type: 3}
+      weight: 1
+      selected: 0
+    - prefab: {fileID: 6998238221925613595, guid: 0996b546c8b0c714991e7456ae040490, type: 3}
+      weight: 1
+      selected: 1
+    - prefab: {fileID: 5376390175986146221, guid: a6953db8e1209e74b8141f1e9847b94b, type: 3}
+      weight: 1
+      selected: 0
+    - prefab: {fileID: 8596010870747751422, guid: f3f0fef6f816f4641856a0db4dfbb905, type: 3}
       weight: 1
       selected: 0
     placement:
@@ -63,7 +75,7 @@ MonoBehaviour:
   layerMask:
     serializedVersion: 2
     m_Bits: 4294967295
-  minDistance: 0.85
+  minDistance: 1.8
   minSlope: 0
   maxSlope: 180
   useMeshFallback: 1
@@ -85,8 +97,8 @@ MonoBehaviour:
   spawnOnlyInMeshes: 1
   forceFullDensity: 0
   notificationSeconds: 3
-  brushRadius: 16.1
-  brushDensity: 29
+  brushRadius: 2.8
+  brushDensity: 18
   pickOrder: 1
   foliageFill: 0
   foliageDensity: 2
