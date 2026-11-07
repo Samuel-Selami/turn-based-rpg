@@ -3334,8 +3334,8 @@ MonoBehaviour:
   - {fileID: 1675003038}
   playerPanels:
   - {fileID: 1589642073}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 425315724}
+  - {fileID: 1002126462}
   actionMenu: {fileID: 866294761}
   selectionAllyVfx: {fileID: 7255440658594885956, guid: fb5516a8ab68204408690d9bdf711670, type: 3}
   selectionSpellAllyVfx: {fileID: 7255440658594885956, guid: a917e75e01ec3464fa6cf08ab64ba4d2, type: 3}

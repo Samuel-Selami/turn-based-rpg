@@ -1,67 +1,83 @@
-using System;
 using System.Collections.Generic;
-using UnityEditor;
+using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.InputSystem;
-using UnityEngine.UI;
-using UnityEngine.UIElements;
-using static UnityEngine.Rendering.DebugUI.Table;
+using UnityEngine.SceneManagement;
 
 
-[System.Serializable]
-public class TitleScreenSelection
-{
-    public RectTransform button;
-    public GameObject highlightBorder;
-    public GameObject highlightStarLeft;
-    public GameObject highlightStarRight;
 
 
-    public void SetHighlighted(bool on)
-    {
-        highlightBorder.SetActive(on);
-        highlightStarLeft.SetActive(on);
-        highlightStarRight.SetActive(on);
-
-        float scale = 1f;
-        if (on)
-            scale = 1.2f;
-        button.localScale = Vector3.one * scale; // scale up
-    }
-}
 
 public class TitleScreenMenu : MonoBehaviour
 {
-    [SerializeField] List<TitleScreenSelection> entries;
-    [SerializeField] RectTransform selectionArrow;
-    int index;
-    Vector3 arrowTarget;
-    [SerializeField] float arrowSpeed = 1f;
+
+    [Header("Menus")]
+  
+    [SerializeField] RectTransform mainMenu;
+
+    [SerializeField] RectTransform loadGameMenu;
+    [SerializeField] RectTransform settingsMenu;
+    [SerializeField] MenuNavigator navigator;
 
     private void Start()
     {
-        Highlight(0);
+
+        mainMenu.gameObject.SetActive(true);
+        loadGameMenu.gameObject.SetActive(false);
+        settingsMenu.gameObject.SetActive(false);
     }
 
-    void Highlight(int i)
-    {
-        for (int j = 0; j < entries.Count; j++)
-            entries[j].SetHighlighted(false);
-        entries[i].SetHighlighted(true);
-
-        arrowTarget = selectionArrow.position;
-        arrowTarget.y = entries[i].button.position.y;
-    }
     void Update()
     {
-        if (entries.Count == 0) return;
-
-        int v = BattleInput.Vertical();
-        if (v != 0)
+        if (mainMenu.gameObject.activeSelf)
         {
-            index = (index + v + entries.Count) % entries.Count;
-            Highlight(index);
+            if (BattleInput.Confirm())
+                ButtonConfirm(navigator.index);
         }
-        selectionArrow.position = Vector3.Lerp(selectionArrow.position, arrowTarget, arrowSpeed * Time.deltaTime);
+
+        if (settingsMenu.gameObject.activeSelf)
+        {
+            if (BattleInput.Cancel())
+            {
+                settingsMenu.gameObject.SetActive(false);
+                mainMenu.gameObject.SetActive(true);
+            }
+        }
     }
+
+    void ButtonConfirm(int i)
+    {
+        if (navigator.index == 0) // New Game
+        {
+            SceneManager.LoadScene("Battle");
+            Debug.Log("New Game");
+        }
+
+        if (navigator.index == 1) // Continue
+        {
+            //
+            Debug.Log("Continue");
+        }
+
+        if (navigator.index == 2) // Load Game
+        {
+            //
+            Debug.Log("Load Game");
+        }
+
+        if (navigator.index == 3) // Settings
+        {
+            mainMenu.gameObject.SetActive(false);
+            //loadGameMenu.gameObject.SetActive(false);
+            settingsMenu.gameObject.SetActive(true);
+            Debug.Log("Settings");
+        }
+
+        if (navigator.index == 4) // Quit
+        {
+            Application.Quit();
+            Debug.Log("Quit");
+        }
+    }
+
+
 }

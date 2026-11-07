@@ -57,6 +57,23 @@ public static class BattleInput
         return 0;
     }
 
+    public static int HorizontalHeld()
+    {
+        // Right
+        if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
+            return 1;
+        if (Gamepad.current != null && (Gamepad.current.leftStick.right.isPressed || Gamepad.current.dpad.right.isPressed))
+            return 1;
+
+        // Left
+        if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.Q))
+            return -1;
+        if (Gamepad.current != null && (Gamepad.current.leftStick.left.isPressed || Gamepad.current.dpad.left.isPressed))
+            return -1;
+
+        return 0;
+    }
+
     public static int Vertical()
     {
         // Up
@@ -69,6 +86,23 @@ public static class BattleInput
         if (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S))
             return 1;
         if (Gamepad.current != null && (Gamepad.current.leftStick.down.wasPressedThisFrame || Gamepad.current.dpad.down.wasPressedThisFrame))
+            return 1;
+
+        return 0;
+    }
+
+    public static int VerticalHeld()
+    {
+        // Up
+        if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.Z))
+            return -1;
+        if (Gamepad.current != null && (Gamepad.current.leftStick.up.isPressed || Gamepad.current.dpad.up.isPressed))
+            return -1;
+
+        // Down (+1 vers le bas de la list)
+        if (Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S))
+            return 1;
+        if (Gamepad.current != null && (Gamepad.current.leftStick.down.isPressed || Gamepad.current.dpad.down.isPressed))
             return 1;
 
         return 0;
