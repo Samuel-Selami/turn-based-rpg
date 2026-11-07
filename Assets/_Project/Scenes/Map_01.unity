@@ -591816,6 +591816,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6489447675202979944, guid: 15c52fc2cdbef6641afe81f7be35e16c, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1202414744}
+    - targetCorrespondingSourceObject: {fileID: 6489447675202979944, guid: 15c52fc2cdbef6641afe81f7be35e16c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1202414749}
   m_SourcePrefab: {fileID: 100100000, guid: 15c52fc2cdbef6641afe81f7be35e16c, type: 3}
 --- !u!1 &1202414739 stripped
 GameObject:
@@ -591840,9 +591843,19 @@ MonoBehaviour:
   cameraTransform: {fileID: 297176387}
   speedSmoothTime: 0.15
   gravity: -20
+--- !u!4 &1202414741 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6560755804377986404, guid: 15c52fc2cdbef6641afe81f7be35e16c, type: 3}
+  m_PrefabInstance: {fileID: 1202414738}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1202414742 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5856076907724214994, guid: 15c52fc2cdbef6641afe81f7be35e16c, type: 3}
+  m_PrefabInstance: {fileID: 1202414738}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1202414743 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 953626288597950691, guid: 15c52fc2cdbef6641afe81f7be35e16c, type: 3}
   m_PrefabInstance: {fileID: 1202414738}
   m_PrefabAsset: {fileID: 0}
 --- !u!143 &1202414744
@@ -591870,6 +591883,56 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 1, z: 0}
+--- !u!4 &1202414745 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 879596074657055754, guid: 15c52fc2cdbef6641afe81f7be35e16c, type: 3}
+  m_PrefabInstance: {fileID: 1202414738}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1202414746 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3965075223815990570, guid: 15c52fc2cdbef6641afe81f7be35e16c, type: 3}
+  m_PrefabInstance: {fileID: 1202414738}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1202414747 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6704997040078154484, guid: 15c52fc2cdbef6641afe81f7be35e16c, type: 3}
+  m_PrefabInstance: {fileID: 1202414738}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1202414748 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6789051675362079011, guid: 15c52fc2cdbef6641afe81f7be35e16c, type: 3}
+  m_PrefabInstance: {fileID: 1202414738}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1202414749
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1202414739}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff3063be9353fd7458713f45709b44f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CapeSpringBones
+  characterRoot: {fileID: 1202414742}
+  capeBones:
+  - {fileID: 1202414741}
+  - {fileID: 1202414743}
+  - {fileID: 1202414745}
+  - {fileID: 1202414746}
+  - {fileID: 1202414747}
+  - {fileID: 1202414748}
+  maxRunSpeed: 20.4
+  runLift: 15
+  turnInfluence: 0.02
+  idleWind: 5
+  movingWind: 8.37
+  windFrequency: 1.45
+  waveDelay: 2.52
+  springSmoothTime: 0.58
+  maxJointAngle: 88.4
+  bendDirection: -31.6
 --- !u!1001 &1202491071
 PrefabInstance:
   m_ObjectHideFlags: 0

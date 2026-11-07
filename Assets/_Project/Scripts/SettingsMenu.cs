@@ -38,7 +38,7 @@ public class SettingsMenu : MonoBehaviour
     {
         ApplyVolume(sliderMasterVolume, "MasterVolume", textMasterVolume);
         ApplyVolume(sliderMusicVolume, "MusicVolume", textMusicVolume);
-        ApplyVolume(sliderSfxVolume, "SfxVolume", textSfxVolume);
+        ApplyVolume(sliderSfxVolume, "SFXVolume", textSfxVolume);
         ApplyVolume(sliderAmbientVolume, "AmbientVolume", textAmbientVolume);
         ApplyFullscreen();
     }
