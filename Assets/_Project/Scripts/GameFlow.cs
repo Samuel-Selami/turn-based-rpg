@@ -2,6 +2,7 @@ using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class GameFlow : MonoBehaviour
 {
@@ -65,6 +66,18 @@ public class GameFlow : MonoBehaviour
 
             yield return null;
         }
+    }
+
+    public void StartBattle()
+    {
+        StartCoroutine(BattleTransition());
+    }
+    IEnumerator BattleTransition()
+    {
+        fadeDuration = 1f;
+        playerController.enabled = false;
+        yield return Fade(0f, 1f);
+        SceneManager.LoadScene("Battle");
     }
 
     void Update()

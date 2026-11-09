@@ -2,11 +2,12 @@ using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Rendering;
+using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
 public class OverworldMonster : MonoBehaviour
 {
-    enum State { Wander, Suspicious, Alerted, Chase}
+    enum State { Wander, Suspicious, Alerted, Chase, Engaging}
     State currentState = State.Wander;
 
     public MonsterData data;
@@ -38,6 +39,7 @@ public class OverworldMonster : MonoBehaviour
     [SerializeField] AnimationCurve popCurve;
     [SerializeField] float shakeSpeed = 12f;
     [SerializeField] float shakeAngle = 8f;
+    [SerializeField] float contactDistance = 1.2f;
     GameObject currentMark;
 
     Camera cam;
@@ -51,7 +53,16 @@ public class OverworldMonster : MonoBehaviour
     void Start()
     {
         homePosition = transform.position;
-        player = GameObject.FindGameObjectWithTag("Player").transform;
+
+        GameObject playerObject = GameObject.FindGameObjectWithTag("Player");
+
+        if (playerObject == null)
+        {
+            enabled = false;
+            return;
+        }
+
+        player = playerObject.transform;
         WanderRoutine = StartCoroutine(Wander());
     }
 
@@ -149,6 +160,17 @@ public class OverworldMonster : MonoBehaviour
     {
         float distanceMonsterPlayer = Vector3.Distance(transform.position, player.transform.position);
 
+        if (distanceMonsterPlayer < contactDistance) // Fight
+        {
+            HideMark();
+            StopCoroutine(WanderRoutine);
+            animator.SetBool("Moving", false);
+            currentState = State.Engaging;
+            Debug.Log("Combat !");
+            Encounter.leader = data;
+            Encounter.enemyCount = 1;
+            zone.gameFlow.StartBattle();
+        }
 
         switch (currentState)
         {
@@ -211,6 +233,8 @@ public class OverworldMonster : MonoBehaviour
                 }
                 break;
 
+                case State.Engaging:
+                break;
         }
     }
 

@@ -16,6 +16,7 @@ public class SpawnEntry
 
 public class MonsterZone : MonoBehaviour
 {
+    public GameFlow gameFlow;
     [Header("Monster Spawn")]
     [SerializeField] List<SpawnEntry> spawnEntries;
     [SerializeField] int spawnCount = 5;
