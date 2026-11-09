@@ -17,6 +17,7 @@ public class TitleScreenMenu : MonoBehaviour
     [SerializeField] RectTransform loadGameMenu;
     [SerializeField] RectTransform settingsMenu;
     [SerializeField] MenuNavigator navigator;
+    [SerializeField] GameFlow gameFlow;
 
     private void Start()
     {
@@ -48,7 +49,7 @@ public class TitleScreenMenu : MonoBehaviour
     {
         if (navigator.index == 0) // New Game
         {
-            SceneManager.LoadScene("Battle");
+            gameFlow.StartGame();
             Debug.Log("New Game");
         }
 

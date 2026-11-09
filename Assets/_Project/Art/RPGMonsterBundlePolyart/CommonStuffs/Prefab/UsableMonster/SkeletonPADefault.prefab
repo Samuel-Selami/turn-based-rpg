@@ -653,6 +653,45 @@ MonoBehaviour:
   wanderRadius: 5
   minWaitTime: 5
   maxWaitTime: 15
+  aggroRadius: 8
+  giveUpRadius: 14
+  suspiciousDuration: 2
+  reactionDelay: 1.5
+  markHeight: 2
+  popDuration: 0.25
+  popCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0.012499988
+      value: 0
+      inSlope: 0.61538464
+      outSlope: 0.61538464
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.5
+      value: 0.3
+      inSlope: 0.054916427
+      outSlope: 0.054916427
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.53617275
+    - serializedVersion: 3
+      time: 1.0125
+      value: 0.14
+      inSlope: -0.36369237
+      outSlope: -0.36369237
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.17886172
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &6285209290496832308
 GameObject:
   m_ObjectHideFlags: 0

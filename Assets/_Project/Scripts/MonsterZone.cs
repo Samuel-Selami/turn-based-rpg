@@ -22,6 +22,9 @@ public class MonsterZone : MonoBehaviour
     [SerializeField] float minSpawnDistance = 3f;
     List<Vector3> usedPoints = new List<Vector3>();
     BoxCollider zone;
+    [Header("Sprite Aggro")]
+    public GameObject questionMarkPrefab;
+    public GameObject exclamationMarkPrefab;
 
     private void Awake()
     {
@@ -102,5 +105,7 @@ public class MonsterZone : MonoBehaviour
 
         return point;
     }
+
+
 
 }
