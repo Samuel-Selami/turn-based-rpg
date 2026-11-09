@@ -23,5 +23,6 @@ MonoBehaviour:
   abilities:
   - {fileID: 11400000, guid: b7bc9dd20160acb429ef7d1ff9c24f35, type: 2}
   - {fileID: 11400000, guid: 8e7da280807106d49b02f8c15061d0a8, type: 2}
+  battlePrefab: {fileID: 1706760125350986, guid: 7f22c0b4e4c94410932f144351dc151d, type: 3}
   stopDistance: 2
   moveSpeed: 7

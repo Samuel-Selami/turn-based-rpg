@@ -14,19 +14,39 @@ public class GameFlow : MonoBehaviour
     [SerializeField] Animator playerAnimator;
     [SerializeField] Light day;
     [SerializeField] Light night;
-    [SerializeField] Image fadeScreen;
-    [SerializeField] float fadeDuration = 2;
     [SerializeField] float standUpDuration = 3f;
+    [SerializeField] float gameStartFadeDuration = 1f;
+    [SerializeField] float battleFadeDuration = 1f;
 
     private void Awake()
     {
+        if (Encounter.returning)
+            return;
         night.gameObject.SetActive(true);
         day.gameObject.SetActive(false);
     }
 
     void Start()
     {
-        
+        ScreenFader.instance.FadeOut(battleFadeDuration);
+
+        if (!Encounter.returning)
+            return;
+
+        night.gameObject.SetActive(false);
+        day.gameObject.SetActive(true);
+
+        titleScreenMenu.SetActive(false);
+        titleScreenCamera.Priority = 0;
+
+        characterController.transform.position = Encounter.playerPosition;
+        characterController.transform.rotation = Encounter.playerRotation;
+        playerController.enabled = true;
+        characterController.enabled = true;
+
+        playerAnimator.Play("Locomotion");
+
+        Encounter.returning = false;
     }
     public void StartGame()
     {
@@ -40,32 +60,14 @@ public class GameFlow : MonoBehaviour
         playerAnimator.SetTrigger("StandUp");
         yield return new WaitForSeconds(standUpDuration);
 
-        yield return Fade(0f, 1f);
+        yield return ScreenFader.instance.Fade(0f, 1f, gameStartFadeDuration);
         night.gameObject.SetActive(false);
         day.gameObject.SetActive(true);
-        yield return Fade(1f, 0f);
+        yield return ScreenFader.instance.Fade(1f, 0f, gameStartFadeDuration);
 
         playerController.enabled = true;
         characterController.enabled = true;
 
-    }
-
-    IEnumerator Fade(float from, float to)
-    {
-        float elapsed = 0f;
-
-        while (elapsed < fadeDuration)
-        {
-            elapsed += Time.deltaTime;
-            float t = elapsed / fadeDuration;
-
-
-            Color c = fadeScreen.color;
-            c.a = Mathf.Lerp(from, to, t);
-            fadeScreen.color = c;
-
-            yield return null;
-        }
     }
 
     public void StartBattle()
@@ -74,9 +76,9 @@ public class GameFlow : MonoBehaviour
     }
     IEnumerator BattleTransition()
     {
-        fadeDuration = 1f;
         playerController.enabled = false;
-        yield return Fade(0f, 1f);
+        playerAnimator.SetFloat("Speed", 0f);
+        yield return ScreenFader.instance.Fade(0f, 1f, battleFadeDuration);
         SceneManager.LoadScene("Battle");
     }
 

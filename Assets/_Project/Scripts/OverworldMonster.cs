@@ -160,7 +160,7 @@ public class OverworldMonster : MonoBehaviour
     {
         float distanceMonsterPlayer = Vector3.Distance(transform.position, player.transform.position);
 
-        if (distanceMonsterPlayer < contactDistance) // Fight
+        if (distanceMonsterPlayer < contactDistance) // Start Fight
         {
             HideMark();
             StopCoroutine(WanderRoutine);
@@ -168,7 +168,9 @@ public class OverworldMonster : MonoBehaviour
             currentState = State.Engaging;
             Debug.Log("Combat !");
             Encounter.leader = data;
-            Encounter.enemyCount = 1;
+            Encounter.enemyCount = Random.Range(1, 4);
+            Encounter.playerPosition = player.transform.position;
+            Encounter.playerRotation = player.transform.rotation;
             zone.gameFlow.StartBattle();
         }
 

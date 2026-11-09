@@ -24,5 +24,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: b7bc9dd20160acb429ef7d1ff9c24f35, type: 2}
   - {fileID: 11400000, guid: 926bd4fb17ed69648970e9ad1686b142, type: 2}
   - {fileID: 11400000, guid: 07bab778835175b48b932fb4f3188235, type: 2}
+  battlePrefab: {fileID: 4238835250591795873, guid: b58b981c7ac34c3eaaf57a11c09d5da2, type: 3}
   stopDistance: 2
   moveSpeed: 7

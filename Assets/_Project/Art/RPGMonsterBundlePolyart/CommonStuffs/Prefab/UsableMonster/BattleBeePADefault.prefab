@@ -908,6 +908,7 @@ GameObject:
   - component: {fileID: 6112321247830043478}
   - component: {fileID: 158610182413660460}
   - component: {fileID: 185807111103519654}
+  - component: {fileID: -1735292800574914952}
   m_Layer: 0
   m_Name: BattleBeePADefault
   m_TagString: Untagged
@@ -1011,6 +1012,31 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  shakeSpeed: 12
+  shakeAngle: 8
+  contactDistance: 1.2
+--- !u!114 &-1735292800574914952
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6888400107449561580}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9be83a017e8bb540b18812812118480, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Monster
+  manager: {fileID: 0}
+  data: {fileID: 11400000, guid: d27edeb44a4711442ad6d1095ce55ec6, type: 2}
+  prepareTime: 0.35
+  returnTime: 0.12
+  currentHp: 0
+  currentMana: 0
+  chosenTarget: {fileID: 0}
+  chosenAbility: {fileID: 0}
+  isGuarding: 0
+  chosenGuard: 0
 --- !u!1 &7033944498698363176
 GameObject:
   m_ObjectHideFlags: 0

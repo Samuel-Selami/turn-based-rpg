@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Threading;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using static UnityEngine.GraphicsBuffer;
 
 
@@ -11,7 +12,9 @@ public class BattleManager : MonoBehaviour
 {
     [Header("List player / ennemy")]
     [SerializeField] List<Monster> playerTeam;
-    [SerializeField] List<Monster> ennemyTeam;
+    [SerializeField] Transform enemyAnchor;
+    [SerializeField] float enemySpacing = 2f;
+    [SerializeField] List<Monster> enemyTeam;
     BattleManager manager;
     BattleState state;
     [SerializeField] List<MonsterPanel> playerPanels;
@@ -31,12 +34,13 @@ public class BattleManager : MonoBehaviour
 
     private void Awake()
     {
+        SpawnEnnemies();
         for (int i = 0; i < playerPanels.Count; i++)
         {
             playerPanels[i].monster = playerTeam[i];
         }
 
-        foreach (Monster enemy in ennemyTeam)
+        foreach (Monster enemy in enemyTeam)
         {
             GameObject tag = Instantiate(enemyTagPrefab, enemy.transform);
             tag.GetComponent<EnemyTag>().monster = enemy;
@@ -45,14 +49,15 @@ public class BattleManager : MonoBehaviour
 
     void Start()
     {
-        foreach (Monster ally in ennemyTeam) ally.manager = this; // ennemyteam
+        ScreenFader.instance.FadeOut(1f);
+        foreach (Monster ally in enemyTeam) ally.manager = this; // ennemyteam
         foreach (Monster ally in playerTeam) ally.manager = this; // playerteam
         StartCoroutine(BattleLoop());
     }
 
     IEnumerator BattleLoop() // boucle de combat
     {
-        while (playerTeam.Count > 0 && ennemyTeam.Count > 0)
+        while (playerTeam.Count > 0 && enemyTeam.Count > 0)
         {
             // PLAYER
             state = BattleState.PlayerTurn;
@@ -110,7 +115,7 @@ public class BattleManager : MonoBehaviour
                     if (ally.chosenAbility != null && (ally.chosenAbility.targetSide == AbilityData.TargetSide.Allies || ally.chosenAbility.targetSide == AbilityData.TargetSide.Self))
                         ally.chosenTarget = null;
                     else
-                        ally.chosenTarget = PickTarget(ennemyTeam);
+                        ally.chosenTarget = PickTarget(enemyTeam);
                 }
 
                 if (ally.IsAlive() && ally.chosenTarget != null)
@@ -124,7 +129,7 @@ public class BattleManager : MonoBehaviour
 
                         if (ally.chosenAbility.targetMode == AbilityData.TargetMode.All)
                         {
-                            List<Monster> team = ennemyTeam;
+                            List<Monster> team = enemyTeam;
                             if (ally.chosenAbility.targetSide == AbilityData.TargetSide.Allies)
                                 team = playerTeam;
 
@@ -151,7 +156,7 @@ public class BattleManager : MonoBehaviour
 
             // ENNEMY
             state = BattleState.EnnemyTurn;
-            foreach (Monster ally in new List<Monster>(ennemyTeam))
+            foreach (Monster ally in new List<Monster>(enemyTeam))
             {
                 if (!ally.IsAlive())
                     continue;
@@ -171,7 +176,7 @@ public class BattleManager : MonoBehaviour
                 List<Monster> targets = new List<Monster>();
 
                 if (ability.targetSide == AbilityData.TargetSide.Allies)
-                    team = ennemyTeam;
+                    team = enemyTeam;
 
                 if (ability.targetSide == AbilityData.TargetSide.Self)
                     targets.Add(ally);
@@ -188,10 +193,14 @@ public class BattleManager : MonoBehaviour
             }
         }
         // VICTORY
-        if (ennemyTeam.Count == 0)
+        if (enemyTeam.Count == 0)
         {
             state = BattleState.Victory;
             Debug.Log("Vous avez remportez le combat !");
+            yield return new WaitForSeconds(2);
+            Encounter.returning = true;
+            yield return ScreenFader.instance.Fade(0f, 1f, 1f);
+            SceneManager.LoadScene("Map_01");
         }
         //DEFEAT
         else if (playerTeam.Count == 0)
@@ -289,7 +298,7 @@ public class BattleManager : MonoBehaviour
                 continue;
             }
 
-            List<Monster> targetTeam = ennemyTeam;
+            List<Monster> targetTeam = enemyTeam;
             GameObject selectionMonsterPrefab = selectionEnnemyVfx;
 
             if (ally.chosenAbility != null)
@@ -459,6 +468,22 @@ public class BattleManager : MonoBehaviour
     public void RemoveFromBattle(Monster m)
     {
         playerTeam.Remove(m);
-        ennemyTeam.Remove(m);
+        enemyTeam.Remove(m);
+    }
+
+    void SpawnEnnemies()
+    {
+        if (Encounter.leader == null)
+            return;
+
+        enemyTeam.Clear();
+        
+        for (int i = 0; i < Encounter.enemyCount; i++)
+        {
+            float offset = (i - (Encounter.enemyCount - 1) / 2f) * enemySpacing;
+            Vector3 position = enemyAnchor.position + -enemyAnchor.right * offset;
+            GameObject monsterCreate = Instantiate(Encounter.leader.battlePrefab, position, enemyAnchor.rotation);
+            enemyTeam.Add(monsterCreate.GetComponent<Monster>());
+        }
     }
 }

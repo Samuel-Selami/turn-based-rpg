@@ -14,7 +14,8 @@ public class MonsterData : ScriptableObject
     public int defense;
     public int maxMana;
     public int speed;
-    public List<AbilityData> abilities; 
+    public List<AbilityData> abilities;
+    public GameObject battlePrefab;
 
     [Header("Animations")]
     public float stopDistance;

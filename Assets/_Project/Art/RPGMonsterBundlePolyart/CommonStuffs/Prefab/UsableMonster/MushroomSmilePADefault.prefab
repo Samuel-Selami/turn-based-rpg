@@ -142,6 +142,7 @@ GameObject:
   - component: {fileID: 1221083948262841476}
   - component: {fileID: 1691260113314563210}
   - component: {fileID: 8923544587075179923}
+  - component: {fileID: 4161057392493573714}
   m_Layer: 0
   m_Name: MushroomSmilePADefault
   m_TagString: Untagged
@@ -245,6 +246,31 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  shakeSpeed: 12
+  shakeAngle: 8
+  contactDistance: 1.2
+--- !u!114 &4161057392493573714
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1997902569578628670}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9be83a017e8bb540b18812812118480, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Monster
+  manager: {fileID: 0}
+  data: {fileID: 11400000, guid: e93a20532d300fe42b000462acd6afd3, type: 2}
+  prepareTime: 0.35
+  returnTime: 0.12
+  currentHp: 0
+  currentMana: 0
+  chosenTarget: {fileID: 0}
+  chosenAbility: {fileID: 0}
+  isGuarding: 0
+  chosenGuard: 0
 --- !u!1 &2411188951558394283
 GameObject:
   m_ObjectHideFlags: 0
