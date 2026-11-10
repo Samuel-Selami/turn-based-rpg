@@ -84,19 +84,22 @@ public class DialogueUI : MonoBehaviour
 
         if (line.isplayerSide)
         {
+            rightPortrait.sprite = line.portrait;
             rightPortrait.color = Color.white;
-
             rightPortraitScale = Vector3.one * 1.2f;
             leftPortrait.color = Color.gray;
             leftPortraitScale = Vector3.one;
         }
         else
         {
+            leftPortrait.sprite = line.portrait;
             rightPortrait.color = Color.gray;
             rightPortraitScale = Vector3.one;
             leftPortrait.color = Color.white;
             leftPortraitScale = Vector3.one * 1.2f;
         }
+        rightPortrait.enabled = rightPortrait.sprite != null;
+        leftPortrait.enabled = leftPortrait.sprite != null;
     }
 
     IEnumerator TypeText(string fullText)
