@@ -1,8 +1,9 @@
+using System.Collections;
 using Unity.Cinemachine;
 using UnityEngine;
-using UnityEngine.UI;
-using System.Collections;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+using static Encounter;
 
 public class GameFlow : MonoBehaviour
 {
@@ -17,10 +18,11 @@ public class GameFlow : MonoBehaviour
     [SerializeField] float standUpDuration = 3f;
     [SerializeField] float gameStartFadeDuration = 1f;
     [SerializeField] float battleFadeDuration = 1f;
+    [SerializeField] Transform respawnPoint;
 
     private void Awake()
     {
-        if (Encounter.returning)
+        if (Encounter.returnReason != ReturnReason.None)
             return;
         night.gameObject.SetActive(true);
         day.gameObject.SetActive(false);
@@ -30,23 +32,33 @@ public class GameFlow : MonoBehaviour
     {
         ScreenFader.instance.FadeOut(battleFadeDuration);
 
-        if (!Encounter.returning)
+        if (Encounter.returnReason == ReturnReason.None)
             return;
 
+        Encounter.aggroResumeTime = Time.time + 3f;
         night.gameObject.SetActive(false);
         day.gameObject.SetActive(true);
 
         titleScreenMenu.SetActive(false);
         titleScreenCamera.Priority = 0;
 
-        characterController.transform.position = Encounter.playerPosition;
-        characterController.transform.rotation = Encounter.playerRotation;
+        if (Encounter.returnReason == ReturnReason.Defeat)
+        {
+            characterController.transform.position = respawnPoint.position;
+            characterController.transform.rotation = respawnPoint.rotation;
+        }
+        else
+        {
+            characterController.transform.position = Encounter.playerPosition;
+            characterController.transform.rotation = Encounter.playerRotation;
+        }
+
         playerController.enabled = true;
         characterController.enabled = true;
 
         playerAnimator.Play("Locomotion");
 
-        Encounter.returning = false;
+        Encounter.returnReason = ReturnReason.None;
     }
     public void StartGame()
     {

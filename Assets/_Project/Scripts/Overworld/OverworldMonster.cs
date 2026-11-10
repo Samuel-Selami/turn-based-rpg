@@ -160,6 +160,11 @@ public class OverworldMonster : MonoBehaviour
     {
         float distanceMonsterPlayer = Vector3.Distance(transform.position, player.transform.position);
 
+        if (Time.time < Encounter.aggroResumeTime)
+        {
+            return;
+        }
+
         if (distanceMonsterPlayer < contactDistance) // Start Fight
         {
             HideMark();

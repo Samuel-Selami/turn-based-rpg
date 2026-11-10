@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9db5513404d9f4540b96986b47aac0e8, type: 3}
+  m_Name: Dialogue_Test
+  m_EditorClassIdentifier: Assembly-CSharp::DialogueData
+  lines:
+  - speakerName: Kael
+    portrait: {fileID: 21300000, guid: f0867f671f7c5974c9639ee2a62e437c, type: 3}
+    isplayerSide: 1
+    text: Bonjour, ceci est un super test
+  - speakerName: Kael
+    portrait: {fileID: 21300000, guid: 5c75671ee21cc6c4e9d3e177bb97d10a, type: 3}
+    isplayerSide: 1
+    text: Mais tu sais que j'adore faire des supers tests de la mort qui tue hein ...
+  - speakerName: Unknow
+    portrait: {fileID: 0}
+    isplayerSide: 0
+    text: Non je savais pas mais maintenant je le sais et je suis heureux
+  - speakerName: Kael
+    portrait: {fileID: 21300000, guid: 2df80c5d259d81d44a582c59f6278b9c, type: 3}
+    isplayerSide: 1
+    text: "Nice, c'est bien d'\xEAtre heureux dans la vie. Je te jure. Bon adios l'ami"

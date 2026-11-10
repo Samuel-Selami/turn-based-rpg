@@ -6,5 +6,7 @@ public static class Encounter
     public static int enemyCount;
     public static Vector3 playerPosition;
     public static Quaternion playerRotation;
-    public static bool returning;
+    public enum ReturnReason { None, Victory, Defeat }
+    public static ReturnReason returnReason;
+    public static float aggroResumeTime;
 }

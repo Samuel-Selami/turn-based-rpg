@@ -4,6 +4,7 @@ using System.Threading;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using static Encounter;
 using static UnityEngine.GraphicsBuffer;
 
 
@@ -198,7 +199,7 @@ public class BattleManager : MonoBehaviour
             state = BattleState.Victory;
             Debug.Log("Vous avez remportez le combat !");
             yield return new WaitForSeconds(2);
-            Encounter.returning = true;
+            Encounter.returnReason = ReturnReason.Victory;
             yield return ScreenFader.instance.Fade(0f, 1f, 1f);
             SceneManager.LoadScene("Map_01");
         }
@@ -207,6 +208,10 @@ public class BattleManager : MonoBehaviour
         {
             state = BattleState.Defeat;
             Debug.Log("Vous avez été défait !");
+            yield return new WaitForSeconds(2);
+            Encounter.returnReason = ReturnReason.Defeat;
+            yield return ScreenFader.instance.Fade(0f, 1f, 1f);
+            SceneManager.LoadScene("Map_01");
         }
 
     }
