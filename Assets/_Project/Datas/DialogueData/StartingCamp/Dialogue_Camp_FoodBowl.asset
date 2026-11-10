@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9db5513404d9f4540b96986b47aac0e8, type: 3}
+  m_Name: Dialogue_Camp_FoodBowl
+  m_EditorClassIdentifier: Assembly-CSharp::DialogueData
+  lines:
+  - speakerName: Kael
+    portrait: {fileID: 21300000, guid: 373faa1d736fec7468c20ddb9dfec425, type: 3}
+    isplayerSide: 1
+    text: Encore quelques restes d'hier soir...
+  - speakerName: Kael
+    portrait: {fileID: 21300000, guid: 6746a710052f08a40b8c564d136c540e, type: 3}
+    isplayerSide: 1
+    text: "\xC7a devrait suffire jusqu'\xE0 Valbrume."
+  - speakerName: Kael
+    portrait: {fileID: 21300000, guid: 67f1e8be17b293b4eba854b803ca5512, type: 3}
+    isplayerSide: 1
+    text: "Enfin, j'esp\xE8re."
