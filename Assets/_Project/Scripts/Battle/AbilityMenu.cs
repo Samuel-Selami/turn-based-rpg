@@ -21,6 +21,9 @@ public class AbilityMenu : MonoBehaviour
     public bool chosen;
     public bool cancelled;
 
+    [Header("Sound")]
+    [SerializeField] UISound uiSound;
+
 
     void Highlight(int i)
     {
@@ -70,9 +73,14 @@ public class AbilityMenu : MonoBehaviour
         {
             index = (index + v + rows.Count) % rows.Count;
             Highlight(index);
+            uiSound.PlayNavigate();
         }
 
-        if (BattleInput.Confirm()) chosen = true;
+        if (BattleInput.Confirm())
+        {
+            chosen = true;
+            uiSound.PlayConfirm();
+        }
         if (BattleInput.Cancel()) cancelled = true;
 
     }

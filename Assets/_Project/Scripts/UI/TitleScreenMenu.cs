@@ -18,6 +18,8 @@ public class TitleScreenMenu : MonoBehaviour
     [SerializeField] RectTransform settingsMenu;
     [SerializeField] MenuNavigator navigator;
     [SerializeField] GameFlow gameFlow;
+    [Header("Sound")]
+    [SerializeField] UISound uiSound;
 
     private void Start()
     {
@@ -49,6 +51,7 @@ public class TitleScreenMenu : MonoBehaviour
     {
         if (navigator.index == 0) // New Game
         {
+            uiSound.PlayConfirm();
             gameFlow.StartGame();
             Debug.Log("New Game");
         }
@@ -57,25 +60,28 @@ public class TitleScreenMenu : MonoBehaviour
         {
             //
             Debug.Log("Continue");
+            uiSound.PlayError();
         }
 
         if (navigator.index == 2) // Load Game
         {
             //
             Debug.Log("Load Game");
+            uiSound.PlayError();
         }
 
         if (navigator.index == 3) // Settings
         {
             mainMenu.gameObject.SetActive(false);
-            //loadGameMenu.gameObject.SetActive(false);
             settingsMenu.gameObject.SetActive(true);
+            uiSound.PlayConfirm();
             Debug.Log("Settings");
         }
 
         if (navigator.index == 4) // Quit
         {
             Application.Quit();
+            uiSound.PlayConfirm();
             Debug.Log("Quit");
         }
     }

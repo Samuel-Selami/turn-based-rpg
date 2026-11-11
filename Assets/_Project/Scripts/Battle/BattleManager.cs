@@ -32,6 +32,8 @@ public class BattleManager : MonoBehaviour
     [SerializeField] float popupHeight = 3f;
     [SerializeField, Range(0f, 1f)] float impactPoint = 0.5f;
     bool commandCancelled;
+    [Header("Sound")]
+    [SerializeField] AudioSource sfxSource;
 
     private void Awake()
     {
@@ -440,6 +442,7 @@ public class BattleManager : MonoBehaviour
     public IEnumerator AbilityVfxSequence(AbilityData ability, List<Monster> targets)
     {
         List<GameObject> vfxList = new List<GameObject>();
+        PlaySfx(ability.abilityClip);
 
         if (targets.Count == 0 || ability.abilityVfx == null)
         {
@@ -490,5 +493,10 @@ public class BattleManager : MonoBehaviour
             GameObject monsterCreate = Instantiate(Encounter.leader.battlePrefab, position, enemyAnchor.rotation);
             enemyTeam.Add(monsterCreate.GetComponent<Monster>());
         }
+    }
+
+    public void PlaySfx(AudioClip clip)
+    {
+        sfxSource.PlayOneShot(clip);
     }
 }

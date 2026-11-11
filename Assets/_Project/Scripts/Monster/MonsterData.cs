@@ -20,4 +20,7 @@ public class MonsterData : ScriptableObject
     [Header("Animations")]
     public float stopDistance;
     public float moveSpeed;
+
+    [Header("Sound")]
+    public AudioClip attackClip;
 }

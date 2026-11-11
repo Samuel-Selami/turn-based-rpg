@@ -21,6 +21,8 @@ public class ActionMenu : MonoBehaviour
     int index = 0;
 
     public ActionType chosenAction;
+    [Header("Sound")]
+    [SerializeField] UISound uiSound;
 
     void Highlight(int i)
     {
@@ -47,12 +49,14 @@ public class ActionMenu : MonoBehaviour
             else index = entries[index].left;
 
             Highlight(index);
+            uiSound.PlayNavigate();
         }
 
         if (BattleInput.Confirm())
         {
             chosenAction = (ActionType)index;
             actionChosen = true;
+            uiSound.PlayConfirm();
         }
 
     }

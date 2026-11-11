@@ -87,10 +87,12 @@ public class MonsterZone : MonoBehaviour
     }
     public Vector3 RandomPointInZone()
     {
-        float randomPointX = Random.Range(zone.bounds.min.x, zone.bounds.max.x);
-        float randomPointZ = Random.Range(zone.bounds.min.z, zone.bounds.max.z);
+        float randomPointX = Random.Range(-zone.size.x / 2f, zone.size.x / 2f);
+        float randomPointZ = Random.Range(-zone.size.z / 2f, zone.size.z / 2f);
 
-        Vector3 randomPointFinal = new Vector3(randomPointX, zone.bounds.min.y, randomPointZ);
+
+        Vector3 local = new Vector3(randomPointX, 0f, randomPointZ) + zone.center;
+        Vector3 randomPointFinal = transform.TransformPoint(local);
 
         return SnapToGround(randomPointFinal);
     }

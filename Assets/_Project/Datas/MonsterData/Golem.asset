@@ -26,3 +26,4 @@ MonoBehaviour:
   battlePrefab: {fileID: 1706760125350986, guid: 7f22c0b4e4c94410932f144351dc151d, type: 3}
   stopDistance: 2
   moveSpeed: 7
+  attackClip: {fileID: 8300000, guid: 889316e0a1c69aa4ca5c3bcfab14c5e4, type: 3}

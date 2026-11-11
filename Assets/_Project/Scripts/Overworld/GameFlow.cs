@@ -19,6 +19,10 @@ public class GameFlow : MonoBehaviour
     [SerializeField] float gameStartFadeDuration = 1f;
     [SerializeField] float battleFadeDuration = 1f;
     [SerializeField] Transform respawnPoint;
+    [Header("Sound")]
+    [SerializeField] AudioSource ambienceNight;
+    [SerializeField] AudioSource ambienceDay;
+    [SerializeField] AudioSource musicGame;
 
     private void Awake()
     {
@@ -38,6 +42,10 @@ public class GameFlow : MonoBehaviour
         Encounter.aggroResumeTime = Time.time + 3f;
         night.gameObject.SetActive(false);
         day.gameObject.SetActive(true);
+
+        ambienceNight.Stop();
+        ambienceDay.Play();
+        musicGame.Play();
 
         titleScreenMenu.SetActive(false);
         titleScreenCamera.Priority = 0;
@@ -75,6 +83,9 @@ public class GameFlow : MonoBehaviour
         yield return ScreenFader.instance.Fade(0f, 1f, gameStartFadeDuration);
         night.gameObject.SetActive(false);
         day.gameObject.SetActive(true);
+        ambienceNight.Stop();
+        ambienceDay.Play();
+        musicGame.Play();
         yield return ScreenFader.instance.Fade(1f, 0f, gameStartFadeDuration);
 
         playerController.enabled = true;

@@ -32,6 +32,8 @@ public class AbilityData : ScriptableObject
     public enum TargetMode { Single, All};
     public TargetMode targetMode;
 
+    [Header("Sound")]
+    public AudioClip abilityClip;
 
     public string FormattedDescription()
     {

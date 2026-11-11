@@ -27,3 +27,4 @@ MonoBehaviour:
   accuracy: 40
   targetSide: 0
   targetMode: 0
+  abilityClip: {fileID: 8300000, guid: 889316e0a1c69aa4ca5c3bcfab14c5e4, type: 3}

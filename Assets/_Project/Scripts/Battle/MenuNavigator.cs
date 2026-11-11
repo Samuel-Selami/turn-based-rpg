@@ -1,6 +1,8 @@
 using System.Collections.Generic;
 using UnityEngine;
-
+using System.Collections;
+using UnityEngine.Audio;
+using Unity.VisualScripting;
 
 [System.Serializable]
 public class TitleScreenSelection
@@ -31,10 +33,13 @@ public class MenuNavigator : MonoBehaviour
     public int index;
     Vector3 arrowTarget;
     [SerializeField] float highlightScale = 1.2f;
+    [Header("Sound")]
+    [SerializeField] UISound uiSound;
 
-
-    void Start()
+    IEnumerator Start()
     {
+        arrowTarget = mainMenuSelectionArrow.position;
+        yield return null;
         Highlight(0);
     }
 
@@ -60,6 +65,7 @@ public class MenuNavigator : MonoBehaviour
         {
             index = (index + v + entries.Count) % entries.Count;
             Highlight(index);
+            uiSound.PlayNavigate();
         }
         if (mainMenuSelectionArrow != null)
             mainMenuSelectionArrow.position = Vector3.Lerp(mainMenuSelectionArrow.position, arrowTarget, arrowSpeed * Time.deltaTime);

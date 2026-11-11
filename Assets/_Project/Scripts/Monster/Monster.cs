@@ -215,6 +215,7 @@ public class Monster : MonoBehaviour
         yield return StartCoroutine(MonsterAnimation("Attack")); //anim attack
 
         yield return StartCoroutine(WaitUntil(0.4f));
+        manager.PlaySfx(data.attackClip);
         target.TakeDamage(target.ComputeDamage(data.attack));
         targetrender.material.color = Color.red;
         yield return StartCoroutine(WaitUntil(1f));
