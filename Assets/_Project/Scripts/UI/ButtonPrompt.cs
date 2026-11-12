@@ -40,24 +40,26 @@ public class ButtonPrompt : MonoBehaviour
         switch (pad)
         {
             case PadType.Keyboard:
-                confirmIcon.sprite = keyboardConfirm;
-                backIcon.sprite = keyboardBack;
+                SetIcons(keyboardConfirm, keyboardBack);
                 break;
 
             case PadType.Xbox:
-                confirmIcon.sprite = xboxConfirm;
-                backIcon.sprite = xboxBack;
+                SetIcons(xboxConfirm, xboxBack);
                 break;
 
             case PadType.Playstation:
-                confirmIcon.sprite = psConfirm;
-                backIcon.sprite = psBack;
+                SetIcons(psConfirm, psBack);
                 break;
 
             case PadType.Generic:
-                confirmIcon.sprite= genericConfirm;
-                backIcon.sprite= genericBack;
+                SetIcons(genericConfirm, genericBack);
                 break;
         }
+    }
+
+    void SetIcons(Sprite confirm, Sprite back)
+    {
+        if (confirmIcon != null) confirmIcon.sprite = confirm;
+        if (backIcon != null) backIcon.sprite = back;
     }
 }
