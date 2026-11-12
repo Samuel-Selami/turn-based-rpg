@@ -13,6 +13,12 @@ public class PlayerController : MonoBehaviour
     CharacterController playerController;
     [SerializeField] float gravity = -20f;
     float verticalVelocity;
+    [Header("Footsteps")]
+    [SerializeField] AudioSource footstepSource;
+    [SerializeField] AudioClip[] footstepClips;
+    [SerializeField] float walkStepInterval = 0.5f;
+    [SerializeField] float runStepInterval = 0.3f;
+    float stepTimer;
 
 
     private void Awake()
@@ -51,6 +57,20 @@ public class PlayerController : MonoBehaviour
         move.y = verticalVelocity;
 
         playerController.Move(move * Time.deltaTime);
+
+        if (direction != Vector3.zero && playerController.isGrounded)
+        {
+            stepTimer -= Time.deltaTime;
+            if (stepTimer <= 0f)
+            {
+                footstepSource.PlayOneShot(footstepClips[Random.Range(0, footstepClips.Length)]);
+                stepTimer = walkStepInterval;
+                if (isRunning)
+                    stepTimer = runStepInterval;
+            }
+        }
+        else
+            stepTimer = 0f;
 
         if (direction != Vector3.zero)
         {

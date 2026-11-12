@@ -19,6 +19,8 @@ public class GameFlow : MonoBehaviour
     [SerializeField] float gameStartFadeDuration = 1f;
     [SerializeField] float battleFadeDuration = 1f;
     [SerializeField] Transform respawnPoint;
+    [SerializeField] DeveloperNote developerNote;
+    [SerializeField] GameObject titleScreenUI;
     [Header("Sound")]
     [SerializeField] AudioSource ambienceNight;
     [SerializeField] AudioSource ambienceDay;
@@ -34,10 +36,13 @@ public class GameFlow : MonoBehaviour
 
     void Start()
     {
-        ScreenFader.instance.FadeOut(battleFadeDuration);
-
         if (Encounter.returnReason == ReturnReason.None)
+        {
+            StartCoroutine(IntroSequence());
             return;
+        }
+
+        ScreenFader.instance.FadeOut(battleFadeDuration);
 
         Encounter.aggroResumeTime = Time.time + 3f;
         night.gameObject.SetActive(false);
@@ -103,6 +108,14 @@ public class GameFlow : MonoBehaviour
         playerAnimator.SetFloat("Speed", 0f);
         yield return ScreenFader.instance.Fade(0f, 1f, battleFadeDuration);
         SceneManager.LoadScene("Battle");
+    }
+
+    private IEnumerator IntroSequence()
+    {
+        titleScreenUI.SetActive(false);
+        yield return developerNote.Show();
+        ScreenFader.instance.FadeOut(battleFadeDuration);
+        titleScreenUI.SetActive(true);
     }
 
     void Update()

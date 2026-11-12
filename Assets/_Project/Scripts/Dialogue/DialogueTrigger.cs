@@ -7,6 +7,7 @@ public class DialogueTrigger : MonoBehaviour
     [SerializeField] DialogueData dialogueData;
     [SerializeField] DialogueUI dialogueUI;
     [SerializeField] GameObject promptPrefab;
+    [SerializeField] GameObject confirmPrompt;
     [SerializeField] float promptHeight = 2f;
     [SerializeField] float promptRadius = 10f;
     [SerializeField] float interactRadius = 2f;
@@ -14,6 +15,7 @@ public class DialogueTrigger : MonoBehaviour
     Transform player;
     GameObject currentPrompt;
     bool playerInRange;
+    bool promptIsMine;
 
     private void Start()
     {
@@ -39,6 +41,17 @@ public class DialogueTrigger : MonoBehaviour
             HidePrompt();
 
         playerInRange = distance < interactRadius;
+
+        if (playerInRange && !dialogueUI.isDialoguePlaying)
+        {
+            confirmPrompt.SetActive(true);
+            promptIsMine = true;
+        }
+        else if (promptIsMine)
+        {
+            confirmPrompt.SetActive(false);
+            promptIsMine = false;
+        }
 
         if (!playerInRange)
             return;
