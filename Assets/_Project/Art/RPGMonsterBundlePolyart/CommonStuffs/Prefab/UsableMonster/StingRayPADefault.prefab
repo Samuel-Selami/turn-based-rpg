@@ -869,7 +869,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Monster
   manager: {fileID: 0}
-  data: {fileID: 11400000, guid: 61d3fa78e005458439283ebffc29b9d7, type: 2}
+  data: {fileID: 11400000, guid: 54bad9099b34ff2478ab022af9589ef1, type: 2}
   prepareTime: 0.35
   returnTime: 0.12
   currentHp: 0

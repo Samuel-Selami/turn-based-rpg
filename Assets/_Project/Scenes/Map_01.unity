@@ -192546,6 +192546,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1630897238}
   - {fileID: 61489605}
   - {fileID: 621401703}
   - {fileID: 1156099167}
@@ -426298,9 +426299,11 @@ MonoBehaviour:
   gameFlow: {fileID: 1715152571}
   spawnEntries:
   - monsterPrefab: {fileID: 1997902569578628670, guid: 5654013da7fb419f956120232c54cee1, type: 3}
-    weight: 50
+    weight: 60
   - monsterPrefab: {fileID: 6888400107449561580, guid: 6663a7095dcf4292a33c7d4a948f0cc6, type: 3}
-    weight: 50
+    weight: 20
+  - monsterPrefab: {fileID: 6285209290496832306, guid: a604ffbac01747d6b33aff45d9e3dd8a, type: 3}
+    weight: 20
   spawnCount: 8
   minSpawnDistance: 8
   questionMarkPrefab: {fileID: 6008476424097807198, guid: 6a99585330c372340b06dfd5656ee488, type: 3}
@@ -804564,7 +804567,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 313720250}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 387713759}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1055163,7 +1055166,6 @@ MeshRenderer:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
-  - {fileID: 1630897238}
   - {fileID: 1859969512}
   - {fileID: 1459442609}
   - {fileID: 2126435791}

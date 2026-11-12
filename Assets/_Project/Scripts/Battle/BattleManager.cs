@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
+using Unity.Cinemachine;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -31,9 +32,25 @@ public class BattleManager : MonoBehaviour
     [SerializeField] AbilityMenu abilityMenu;
     [SerializeField] float popupHeight = 3f;
     [SerializeField, Range(0f, 1f)] float impactPoint = 0.5f;
+    [SerializeField] GameObject battleUI;
+    [Header("Player")]
+    [SerializeField] Animator playerAnimator;
+    [Header("Cameras")]
+    [SerializeField] CinemachineCamera gameplayCam;
+    [SerializeField] CinemachineCamera actionCam;
+    [SerializeField] CinemachineCamera introCamAlly01;
+    [SerializeField] CinemachineCamera introCamAlly02;
+    [SerializeField] CinemachineCamera introCamEnemy01;
+    [SerializeField] CinemachineCamera introCamEnemy02;
+    [SerializeField] float introHold01 = 2f;
+    [SerializeField] float introHold02 = 3f;
+    [SerializeField] float cutFadeDuration = 0.15f;
     bool commandCancelled;
     [Header("Sound")]
     [SerializeField] AudioSource sfxSource;
+    [Header("Lancement direct de la scène")]
+    [SerializeField] MonsterData fallbackLeader;
+    [SerializeField] int fallbackEnemyCount = 3;
 
     private void Awake()
     {
@@ -52,7 +69,10 @@ public class BattleManager : MonoBehaviour
 
     void Start()
     {
-        ScreenFader.instance.FadeOut(1f);
+        playerAnimator.Play("Locomotion");
+
+        if (ScreenFader.instance != null)
+            ScreenFader.instance.FadeOut(1f);
         foreach (Monster ally in enemyTeam) ally.manager = this; // ennemyteam
         foreach (Monster ally in playerTeam) ally.manager = this; // playerteam
         StartCoroutine(BattleLoop());
@@ -60,10 +80,15 @@ public class BattleManager : MonoBehaviour
 
     IEnumerator BattleLoop() // boucle de combat
     {
+        yield return StartCoroutine(CameraIntro());
+
         while (playerTeam.Count > 0 && enemyTeam.Count > 0)
         {
             // PLAYER
             state = BattleState.PlayerTurn;
+
+            gameplayCam.gameObject.SetActive(true);
+            actionCam.gameObject.SetActive(false);
 
             foreach (Monster ally in playerTeam)
                 ally.StopGuard();
@@ -101,6 +126,9 @@ public class BattleManager : MonoBehaviour
             }
 
             //action
+            gameplayCam.gameObject.SetActive(false);
+            actionCam.gameObject.SetActive(true);
+
             for (int a = 0; a < playerPanels.Count; a++)
             {
                 Monster ally = playerPanels[a].monster;
@@ -482,7 +510,11 @@ public class BattleManager : MonoBehaviour
     void SpawnEnnemies()
     {
         if (Encounter.leader == null)
-            return;
+        {
+            Encounter.leader = fallbackLeader;
+            Encounter.enemyCount = fallbackEnemyCount;
+            //return;
+        }
 
         enemyTeam.Clear();
         
@@ -494,9 +526,37 @@ public class BattleManager : MonoBehaviour
             enemyTeam.Add(monsterCreate.GetComponent<Monster>());
         }
     }
-
     public void PlaySfx(AudioClip clip)
     {
         sfxSource.PlayOneShot(clip);
+    }
+
+    IEnumerator CameraIntro()
+    {
+        battleUI.SetActive(false);
+
+        yield return new WaitForSeconds(introHold01);
+        introCamAlly01.gameObject.SetActive(false);
+        introCamAlly02.gameObject.SetActive(true);
+        yield return new WaitForSeconds(introHold02);
+
+        yield return FadeScreen(0f, 1f);
+        introCamAlly02.gameObject.SetActive(false);
+        introCamEnemy01.gameObject.SetActive(true);
+        yield return FadeScreen(1f, 0f);
+
+        yield return new WaitForSeconds(introHold01);
+        introCamEnemy01.gameObject.SetActive(false);
+        introCamEnemy02.gameObject.SetActive(true);
+        yield return new WaitForSeconds(introHold02);
+
+        introCamEnemy02.gameObject.SetActive(false);
+        battleUI.SetActive(true);
+    }
+
+    IEnumerator FadeScreen(float from, float to)
+    {
+        if (ScreenFader.instance != null)
+            yield return ScreenFader.instance.Fade(from, to, cutFadeDuration);
     }
 }
