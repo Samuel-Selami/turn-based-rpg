@@ -1,0 +1,95 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9db5513404d9f4540b96986b47aac0e8, type: 3}
+  m_Name: Dialogue_baretender
+  m_EditorClassIdentifier: Assembly-CSharp::DialogueData
+  lines:
+  - speakerName: 'Aubergiste '
+    portrait: {fileID: 21300000, guid: c5ee403c0f9277f4b973d0641988e033, type: 3}
+    isplayerSide: 0
+    text: "Bienvenue \xE0 Valbrume ! Vous cherchez une chambre ?"
+  - speakerName: Kael
+    portrait: {fileID: 21300000, guid: 1a276208863cee743a0482a24de5ecad, type: 3}
+    isplayerSide: 1
+    text: Non. Je viens pour un contrat.
+  - speakerName: Aubergiste
+    portrait: {fileID: 21300000, guid: bf19031392e9c76408e78fbb631a2891, type: 3}
+    isplayerSide: 0
+    text: "Un contrat ? Ah ! Vous devez \xEAtre le mercenaire qu'on attendait !"
+  - speakerName: Kael
+    portrait: {fileID: 21300000, guid: 1a276208863cee743a0482a24de5ecad, type: 3}
+    isplayerSide: 1
+    text: "C'est bien ici qu'on recherche quelqu'un pour retrouver un \xE9claireur ?"
+  - speakerName: Aubergiste
+    portrait: {fileID: 21300000, guid: 1ff650bc22810b045b459a3d23dc78ec, type: 3}
+    isplayerSide: 0
+    text: "Exactement. Il a disparu il y a trois jours, pr\xE8s de l'ancienne route du nord."
+  - speakerName: Kael
+    portrait: {fileID: 21300000, guid: 373faa1d736fec7468c20ddb9dfec425, type: 3}
+    isplayerSide: 1
+    text: "Et personne n'a r\xE9ussi \xE0 le retrouver ?"
+  - speakerName: Aubergiste
+    portrait: {fileID: 21300000, guid: bf19031392e9c76408e78fbb631a2891, type: 3}
+    isplayerSide: 0
+    text: "Deux hommes sont partis \xE0 sa recherche. Ils sont revenus bless\xE9s."
+  - speakerName: Kael
+    portrait: {fileID: 21300000, guid: 7ce771256d339db419624dfa47edf562, type: 3}
+    isplayerSide: 1
+    text: "Je vois. Et la r\xE9compense ?"
+  - speakerName: Aubergiste
+    portrait: {fileID: 21300000, guid: bf19031392e9c76408e78fbb631a2891, type: 3}
+    isplayerSide: 0
+    text: "Deux cents pi\xE8ces d'or, si vous le ramenez vivant."
+  - speakerName: Kael
+    portrait: {fileID: 21300000, guid: 48a4ba3a1ee53b64ea756a99a8c6e6cb, type: 3}
+    isplayerSide: 1
+    text: "\xC7a me va."
+  - speakerName: Aubergiste
+    portrait: {fileID: 21300000, guid: bf19031392e9c76408e78fbb631a2891, type: 3}
+    isplayerSide: 0
+    text: "Parfait ! Il reste seulement une chose \xE0 v\xE9rifier."
+  - speakerName: Kael
+    portrait: {fileID: 21300000, guid: 1a276208863cee743a0482a24de5ecad, type: 3}
+    isplayerSide: 1
+    text: Laquelle ?
+  - speakerName: Aubergiste
+    portrait: {fileID: 21300000, guid: c5ee403c0f9277f4b973d0641988e033, type: 3}
+    isplayerSide: 0
+    text: "Avec quel monstre avez-vous form\xE9 votre pacte ?"
+  - speakerName: Kael
+    portrait: {fileID: 21300000, guid: 7ce771256d339db419624dfa47edf562, type: 3}
+    isplayerSide: 1
+    text: ... Aucun.
+  - speakerName: Aubergiste
+    portrait: {fileID: 21300000, guid: 0e02b9a4ee7da544ab6fb67df0bc19b9, type: 3}
+    isplayerSide: 0
+    text: Pardon ?
+  - speakerName: Kael
+    portrait: {fileID: 21300000, guid: c9bbd78d0ec6f4a4c9e7d83519ffe6d1, type: 3}
+    isplayerSide: 1
+    text: "Je n'ai jamais form\xE9 de pacte."
+  - speakerName: Aubergiste
+    portrait: {fileID: 21300000, guid: bf19031392e9c76408e78fbb631a2891, type: 3}
+    isplayerSide: 0
+    text: "Vous \xEAtes mercenaire... et vous n'avez aucun compagnon ?"
+  - speakerName: Kael
+    portrait: {fileID: 21300000, guid: 2df80c5d259d81d44a582c59f6278b9c, type: 3}
+    isplayerSide: 1
+    text: "Jusqu'ici, une \xE9p\xE9e m'a toujours suffi."
+  - speakerName: Aubergiste
+    portrait: {fileID: 21300000, guid: bf19031392e9c76408e78fbb631a2891, type: 3}
+    isplayerSide: 0
+    text: "Eh bien, dans cette for\xEAt, \xE7a risque d'\xEAtre une autre histoire..."
+  - speakerName: Aubergiste
+    portrait: {fileID: 21300000, guid: bf19031392e9c76408e78fbb631a2891, type: 3}
+    isplayerSide: 0
+    text: Revenez demain matin. Je connais quelqu'un qui pourrait vous apprendre.

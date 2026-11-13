@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9db5513404d9f4540b96986b47aac0e8, type: 3}
+  m_Name: Dialogue_gateGuard
+  m_EditorClassIdentifier: Assembly-CSharp::DialogueData
+  lines:
+  - speakerName: Garde
+    portrait: {fileID: 21300000, guid: 6e85a48d4824db6479eb7a7cfed90153, type: 3}
+    isplayerSide: 0
+    text: "Vous \xEAtes mercenaire, pas vrai ?"
+  - speakerName: Kael
+    portrait: {fileID: 21300000, guid: c9bbd78d0ec6f4a4c9e7d83519ffe6d1, type: 3}
+    isplayerSide: 1
+    text: "\xC7a se voit tant que \xE7a ?"
+  - speakerName: Garde
+    portrait: {fileID: 21300000, guid: 4bf701111f8a1b641a330165ad1a2622, type: 3}
+    isplayerSide: 0
+    text: "L'armure, l'\xE9p\xE9e, cette t\xEAte fatigu\xE9e... Vous ne ressemblez pas \xE0 un boulanger."
+  - speakerName: Kael
+    portrait: {fileID: 21300000, guid: c9bbd78d0ec6f4a4c9e7d83519ffe6d1, type: 3}
+    isplayerSide: 1
+    text: "Dommage. J'aurais peut-\xEAtre d\xFB choisir ce m\xE9tier."
+  - speakerName: Garde
+    portrait: {fileID: 21300000, guid: 6e85a48d4824db6479eb7a7cfed90153, type: 3}
+    isplayerSide: 0
+    text: "Ha ! Vous \xEAtes moins sinistre que vous en avez l'air."

@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9db5513404d9f4540b96986b47aac0e8, type: 3}
+  m_Name: Dialogue_femalePeasant
+  m_EditorClassIdentifier: Assembly-CSharp::DialogueData
+  lines:
+  - speakerName: Paysanne
+    portrait: {fileID: 21300000, guid: 53712c424356ef941898a10d7f8ca672, type: 3}
+    isplayerSide: 0
+    text: "Oh, un voyageur ! \xC7a faisait un moment qu'on n'avait pas vu de nouveau visage."
+  - speakerName: Kael
+    portrait: {fileID: 21300000, guid: 48a4ba3a1ee53b64ea756a99a8c6e6cb, type: 3}
+    isplayerSide: 1
+    text: Je suis seulement de passage.
+  - speakerName: Paysanne
+    portrait: {fileID: 21300000, guid: d86b2723d874ae34fa64df2320bbbf2b, type: 3}
+    isplayerSide: 0
+    text: "Vous avez bien choisi votre journ\xE9e. Le march\xE9 vient d'\xEAtre approvisionn\xE9."
+  - speakerName: Kael
+    portrait: {fileID: 21300000, guid: f0867f671f7c5974c9639ee2a62e437c, type: 3}
+    isplayerSide: 1
+    text: "Tant mieux. Il me reste quelques provisions \xE0 acheter."
+  - speakerName: Paysanne
+    portrait: {fileID: 21300000, guid: d86b2723d874ae34fa64df2320bbbf2b, type: 3}
+    isplayerSide: 0
+    text: "Alors profitez-en ! Et bienvenue \xE0 Valbrume !"

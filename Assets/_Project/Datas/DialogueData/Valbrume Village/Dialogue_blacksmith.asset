@@ -1,0 +1,51 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9db5513404d9f4540b96986b47aac0e8, type: 3}
+  m_Name: Dialogue_blacksmith
+  m_EditorClassIdentifier: Assembly-CSharp::DialogueData
+  lines:
+  - speakerName: Forgeronne
+    portrait: {fileID: 21300000, guid: 53a36ba68c4c5d249bbe079c2ad6512e, type: 3}
+    isplayerSide: 0
+    text: "H\xE9, vous l\xE0 ! Faites voir votre \xE9p\xE9e."
+  - speakerName: Kael
+    portrait: {fileID: 21300000, guid: 7ce771256d339db419624dfa47edf562, type: 3}
+    isplayerSide: 1
+    text: ...Pourquoi ?
+  - speakerName: Forgeronne
+    portrait: {fileID: 21300000, guid: 53a36ba68c4c5d249bbe079c2ad6512e, type: 3}
+    isplayerSide: 0
+    text: "Je reconnais une lame qui a beaucoup servi. Et la v\xF4tre a connu de meilleurs jours."
+  - speakerName: Kael
+    portrait: {fileID: 21300000, guid: 7ce771256d339db419624dfa47edf562, type: 3}
+    isplayerSide: 1
+    text: Elle fait encore son travail.
+  - speakerName: Forgeronne
+    portrait: {fileID: 21300000, guid: 05e8af20bbe76eb45b420fcde89748dc, type: 3}
+    isplayerSide: 0
+    text: "Jusqu'au jour o\xF9 elle vous l\xE2chera au mauvais moment."
+  - speakerName: Kael
+    portrait: {fileID: 21300000, guid: f0867f671f7c5974c9639ee2a62e437c, type: 3}
+    isplayerSide: 1
+    text: "\xC7a fait des ann\xE9es qu'on me dit \xE7a."
+  - speakerName: Forgeronne
+    portrait: {fileID: 21300000, guid: 53a36ba68c4c5d249bbe079c2ad6512e, type: 3}
+    isplayerSide: 0
+    text: Et vous comptez attendre qu'elle se brise pour me donner raison ?
+  - speakerName: Kael
+    portrait: {fileID: 21300000, guid: e20dc51de386a4e4a8b28c935fc800dd, type: 3}
+    isplayerSide: 1
+    text: "...Je repasserai quand j'aurai touch\xE9 ma r\xE9compense."
+  - speakerName: Forgeronne
+    portrait: {fileID: 21300000, guid: 23932b9c778c8354bbe1bb4255c2aaeb, type: 3}
+    isplayerSide: 0
+    text: Ha ! C'est ce qu'ils disent tous.
