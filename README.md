@@ -9,7 +9,7 @@ Beyond the gameplay itself, I developed custom editor tools, data-driven interfa
 
 ## Gameplay Showcase
 
-[![The First Pact - Gameplay](https://img.youtube.com/vi/DfHf9o7t8Vs/maxresdefault.jpg)](https://www.youtube.com/watch?v=/DfHf9o7t8Vs)
+[![The First Pact - Gameplay](https://img.youtube.com/vi/DfHf9o7t8Vs/maxresdefault.jpg)](https://www.youtube.com/watch?v=DfHf9o7t8Vs)
 
 
 ## Features
