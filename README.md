@@ -6,6 +6,12 @@ The project features strategic 3v3 monster battles, exploration, enemy AI, and i
 
 Beyond the gameplay itself, I developed custom editor tools, data-driven interfaces, dynamic camera systems, and stylized rendering effects to explore different aspects of **Game Programming**.
 
+
+## Gameplay Showcase
+
+[![The First Pact - Gameplay](https://img.youtube.com/vi/DfHf9o7t8Vs/maxresdefault.jpg)](https://www.youtube.com/watch?v=/DfHf9o7t8Vs)
+
+
 ## Features
 
 ### Gameplay Systems
